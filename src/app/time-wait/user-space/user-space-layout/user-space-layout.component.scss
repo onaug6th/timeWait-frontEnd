@@ -1,0 +1,14 @@
+.nav-tabs > li >a{
+    color: #24292e;
+    padding-right: 30px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555555;
+    background-color: #ffffff;
+    border:none;
+    border-bottom: #e36209 2px solid;
+    cursor: pointer;
+}

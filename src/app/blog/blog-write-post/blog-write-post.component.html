@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="article-body row" style="background:white;margin: 30px 0px;">
+        <div class="header col-sm-12">
+            <h3>
+                在这里添加新文章
+                <span class="glyphicon glyphicon-piggy-bank pull-right" style=" font-size: 15px; color: #555; cursor: pointer;" data-toggle="modal" data-target="#uploadCourse">帮助</span>
+            </h3>
+        </div>
+        <div class="write-body col-sm-12">
+            <div class="form-group row text-right">
+                <label for="title" class="col-sm-1 col-xs-2">标题：</label>
+                <div class="col-sm-10 col-xs-9">
+                    <input id="title" class="form-control require-input" type="text" [(ngModel)]="article.title" data-field="标题" placeholder="文章的标题，也可以把全部内容塞到标题里"
+                    />
+                </div>
+            </div>
+            <div class="form-group row text-right">
+                <!-- <label for="date" class="col-sm-1">时间：</label>
+                <div class="col-sm-3">
+                    <input id="date" class="form-control require-input daterangepicker-single" type="text" [(ngModel)]="article.date" data-field="时间"/>
+                </div> -->
+                <!-- <label for="size" class="col-sm-1">相框尺寸：</label>
+                <div class="col-sm-2">
+                    <select id="size" class="form-control require-input" [(ngModel)]="article.size" data-field="相框尺寸">
+                        <option value="1">小</option>
+                        <option value="2">大</option>
+                    </select>
+                </div> -->
+                <label for="intro" class="col-sm-1 col-xs-2">简介：</label>
+                <div class="col-sm-5 col-xs-9">
+                    <input id="intro" class="form-control" type="text" [(ngModel)]="article.intro" data-field="简介" placeholder="展示在相框里的简单介绍"
+                    />
+                </div>
+            </div>
+            <div class="form-group row text-right">
+                <label for="type" class="col-sm-1 col-xs-2">分类：</label>
+                <div class="col-sm-4 col-xs-9">
+                    <div class="input-group">
+                        <input id="type" #typeInput type="text" class="form-control require-input" placeholder="如果想新增的话，直接填吧" [(ngModel)]="article.type"
+                            data-field="分类" />
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择现有分类
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li *ngFor="let item of typeList">
+                                    <a (click)="chooseType(item.name)">{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 form-group">
+            <ckeditor [(ngModel)]="article.value" debounce="500" [config]="config" (click)="clickEditor($event)"></ckeditor>
+        </div>
+        <div class="col-xs-12 form-group text-center">
+            <button class="btn btn-success" (click)="savePost()">提交</button>
+        </div>
+    </div>
+</div>
+
+<div id="uploadCourse" class="modal fade in" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title text-center">上传图片的教程</h4>
+            </div>
+            <div class="modal-body">
+                <div class="carousel slide" data-interval="5000" id="carousel-653977">
+                    <div class="carousel-inner" style="border-radius: 4px;">
+                        <div class="item active">
+                            <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/pictureUpload1.jpg">
+                        </div>
+                        <div class="item">
+                            <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/pictureUpload2.jpg">
+                        </div>
+                        <div class="item">
+                            <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/pictureUpload3.jpg">
+                        </div>
+                        <div class="item">
+                            <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/pictureUpload4.jpg">
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-653977" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-653977" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div>
+    <ng-content select="[data-pagination-additional='true']"></ng-content>
+    <ul [ngClass]="pageClassConfig">
+      <li [class.disabled]="currentPageNum <= 1" (click)="prevPageNavigation()">
+        <a href="javascript:void(0)">{{prevPageText}}</a>
+      </li>
+      <li [class.active]="currentPageNum === 1"
+        (click)="pageNavigation(1)"
+        *ngIf="totalPages > 0"><a>1</a>
+      </li>
+      <li *ngIf="showPrevMore"
+        (click)="jumpHandle(-5)"><a>...</a>
+      </li>
+      <li class="number"
+        *ngFor="let pager of pagesShowList"
+        (click)="pageNavigation(pager)"
+        [class.active]="currentPageNum === pager"><a>{{ pager }}</a>
+      </li>
+      <li [class]="'el-icon more btn-quicknext ' + quicknextIconClass"
+        *ngIf="showNextMore"
+        (click)="jumpHandle(5)"><a>...</a>
+      </li>
+      <li class="number"
+        [class.active]="currentPageNum === totalPages"
+        (click)="pageNavigation(totalPages)"
+        *ngIf="totalPages > 1"><a>{{ totalPages }}</a>
+      </li>
+      <li [class.disabled]="currentPageNum === totalPages" (click)="nextPageNavigation()">
+        <a href="javascript:void(0)">{{nextPageText}}</a>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/resource/bootstrap/css/bootstrap.css";
+/* 进度条 */
+@import "../node_modules/resource/pace/pace.css";
+
+
+@import "../node_modules/sweetalert/dist/sweetalert.css";
+
+@import "../node_modules/resource/daterangepicker/daterangepicker.css";
+
+@import "../node_modules/resource/datepicker/datepicker3.css";

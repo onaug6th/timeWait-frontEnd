@@ -1,0 +1,271 @@
+<p class="alert Topalert">用户管理操作栏目<br />
+    <font size="1">目栏作操里管户用</font>
+</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption" style="color:#32c5d2;">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span> 用户管理 </span>
+                </div>
+            </div>
+            <div>
+                <div class="tool-bar">
+                    <button class="btn btn-success" (click)="openNewUserModal()">
+                        <i class="glyphicon glyphicon-refresh"></i> 新增
+                    </button>
+                    <li class="btn btn-primary" style="background:black;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">删除大礼包<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a (click)="deleteCommonMethod('importantInfo')">删除用户重要资料数据</a></li>
+                            <li><a (click)="deleteCommonMethod('baseInfo')">删除用户基本资料数据</a></li>
+                            <li><a (click)="deleteCommonMethod('article')">删除用户文章</a></li>
+                            <li><a (click)="deleteCommonMethod('articleComment')">删除用户文章回复</a></li>
+                            <li><a (click)="deleteCommonMethod('forumPost')">删除用户帖子</a></li>
+                            <li><a (click)="deleteCommonMethod('forumPostComment')">删除用户帖子回复</a></li>
+                            <li><a (click)="deleteCommonMethod('all')">黄金电话虫</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="search-bar clearfix">
+                    <div class="col-sm-12">
+                        <label for="userName" class="col-sm-1">用户名称</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="userName" id="userName" [(ngModel)]="searchData.userName">
+                        </div>
+                        <label for="level" class="col-sm-1">用户级别</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="level" id="level" [(ngModel)]="searchData.level">
+                                <option value=""></option>
+                                <option value="1">普通</option>
+                                <option value="88">管理员</option>
+                            </select>
+                        </div>
+                        <label for="registerDate" class="col-sm-1">注册时间</label>
+                        <div class="col-sm-2">
+                            <input id="registerDate" class="form-control require-input daterangepicker-plugin" 
+                            name="registerDate" type="text"/>
+                        </div>
+                        <label for="email" class="col-sm-1">用户邮箱</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="email" id="email" [(ngModel)]="searchData.email">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-right" style="margin-top:5px;">
+                        <button class="btn btn-primary" (click)="search()">查询</button>
+                        <button class="btn btn-primary" (click)="emptySearch()">清空</button>
+                    </div>
+                </div>
+                <table class="user-manager-table table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="checkAll" [(ngModel)]="isCheckedAll" (ngModelChange)="checkedAll()">
+                        </th>
+                        <th>用户名称</th>
+                        <th>用户级别</th>
+                        <th>注册日期</th>
+                        <th>用户邮箱</th>
+                        <th>用户密码</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr *ngFor="let item of userDataList">
+                        <td>
+                            <input type="checkbox" name="item._id" [(ngModel)]="item.isChecked" (ngModelChange)="checked(item)">
+                        </td>
+                        <td>
+                            <!-- 用户名称 -->
+                            {{item.userName}}
+                        </td>
+                        <td>
+                            <!-- 用户级别 -->
+                            {{levelWordbook[item.level]}}
+                        </td>
+                        <td>
+                            <!-- 注册日期 -->
+                            {{item.registerDate}}
+                        </td>
+                        <td>
+                            <!-- 用户邮箱 -->
+                            {{item.email}}
+                        </td>
+                        <td>
+                            <!-- 用户密码 -->
+                            {{item.passWord}}
+                        </td>
+                        <td>
+                            <!-- 操作 -->
+                            <button class="btn" (click)="openUserDetailModal($event,item)">查看详情</button>
+                        </td>
+                    </tr>
+                </table>
+                <!--底部分页按钮-->
+                <app-pagination
+                    [currentPageNum]="pageInfo.currentPageNum"
+                    [pagesShow]="pageInfo.pagesShow"
+                    [totalPages]="pageInfo.totalPages"
+                    (pageChanged)="pageNavigation($event)">
+                    </app-pagination>
+                <!--底部分页按钮-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 用户详情Modal -->
+<div id="user-detail" class="user-detail modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" (click)="closeUserDetailModal()">&times;</button>
+                <h4 class="text-center">用户详细资料</h4>
+            </div>
+            <div class="modal-body clearfix" style="height:500px;overflow-y:scroll">
+                <h4>用户重要信息</h4>
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="user-detail-id" class="col-sm-2">用户id</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-id" type="text" class="form-control" name="user-detail-id" [(ngModel)]="detailModalData._id">
+                        </div>
+                        <label for="user-detail-userName" class="col-sm-2">用户名称</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-userName" type="text" class="form-control" name="user-detail-userName" [(ngModel)]="detailModalData.userName">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="user-detail-passWord" class="col-sm-2">密码</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-passWord" type="text" class="form-control" name="user-detail-passWord" [(ngModel)]="detailModalData.passWord">
+                        </div>
+                        <label for="user-detail-email" class="col-sm-2">邮箱</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-email" type="text" class="form-control" name="user-detail-email" [(ngModel)]="detailModalData.email">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="user-detail-level" class="col-sm-2">权限</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-level" type="text" class="form-control" name="user-detail-level" [(ngModel)]="detailModalData.level">
+                        </div>
+                        <label for="user-detail-registerDate" class="col-sm-2">注册时间</label>
+                        <div class="col-sm-4">
+                            <input id="user-detail-registerDate" type="text" class="form-control" name="user-detail-registerDate" [(ngModel)]="detailModalData.registerDate">
+                        </div>
+                    </div>
+                </form>
+                <h4>用户基础信息</h4>
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="realName" class="col-sm-2">真实姓名</label>
+                        <div class="col-sm-4">
+                            <input id="realName" type="text" class="form-control" name="realName" [(ngModel)]="detailModalBaseInfoData.realName">
+                        </div>
+                        <label for="gender" class="col-sm-2">性别</label>
+                        <div class="col-sm-4">
+                            <input id="gender" type="text" class="form-control" name="gender" [(ngModel)]="detailModalBaseInfoData.gender">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="phone" class="col-sm-2">手机</label>
+                        <div class="col-sm-4">
+                            <input id="phone" type="text" class="form-control" name="phone" [(ngModel)]="detailModalBaseInfoData.phone">
+                        </div>
+                        <label for="birthDay" class="col-sm-2">生日</label>
+                        <div class="col-sm-4">
+                            <input id="birthDay" type="text" class="form-control daterangepicker-single" name="birthDay" [(ngModel)]="detailModalBaseInfoData.birthDay">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="weibo" class="col-sm-2">微博</label>
+                        <div class="col-sm-4">
+                            <input id="weibo" type="text" class="form-control" name="weibo" [(ngModel)]="detailModalBaseInfoData.weibo">
+                        </div>
+                        <label for="qq" class="col-sm-2">qq</label>
+                        <div class="col-sm-4">
+                            <input id="qq" type="text" class="form-control" name="qq" [(ngModel)]="detailModalBaseInfoData.qq">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="weChat" class="col-sm-2">微信</label>
+                        <div class="col-sm-4">
+                            <input id="weChat" type="text" class="form-control" name="weChat" [(ngModel)]="detailModalBaseInfoData.weChat">
+                        </div>
+                        <label for="intro" class="col-sm-2">简介</label>
+                        <div class="col-sm-4">
+                            <input id="intro" type="text" class="form-control" name="intro" [(ngModel)]="detailModalBaseInfoData.intro">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="address" class="col-sm-2">地址</label>
+                        <div class="col-sm-4">
+                            <input id="address" type="text" class="form-control" name="address" [(ngModel)]="detailModalBaseInfoData.address">
+                        </div>
+                        <label for="lunch" class="col-sm-2">午餐</label>
+                        <div class="col-sm-4">
+                            <input id="lunch" type="text" class="form-control" name="lunch" [(ngModel)]="detailModalBaseInfoData.lunch">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="zfb" class="col-sm-2">支付宝</label>
+                        <div class="col-sm-4">
+                            <input id="zfb" type="text" class="form-control" name="zfb" [(ngModel)]="detailModalBaseInfoData.zfb">
+                        </div>
+                        <label for="wzry" class="col-sm-2">王者荣耀</label>
+                        <div class="col-sm-4">
+                            <input id="wzry" type="text" class="form-control" name="wzry" [(ngModel)]="detailModalBaseInfoData.wzry">
+                        </div>
+                    </div>
+                </form>
+                <h4>成就</h4>
+                <div *ngFor="let item of detailModalBaseInfoData.achievement">
+                    <div class="form-group text-right">
+                        <label class="col-sm-2">{{item}}</label>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="submitImportantProfile(detailModalData._id)">修改重要资料</button>
+                <button class="btn btn-primary" (click)="submitBaseProfile(detailModalBaseInfoData.userID)">修改基础资料</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 用户详情Modal -->
+
+<!-- 新增用户Modal -->
+<div id="new-user" class="new-user modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" (click)="closeNewUserModal()">&times;</button>
+                <h4 class="text-center">新加用户</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="new_userName" class="col-sm-2">用户名</label>
+                        <div class="col-sm-4">
+                            <input id="new_userName" type="new_userName" class="form-control" name="new_userName" [(ngModel)]="newUserModalData.userName">
+                        </div>
+                        <label for="new_passWord" class="col-sm-2">密码</label>
+                        <div class="col-sm-4">
+                            <input id="new_passWord" type="new_passWord" class="form-control" name="new_passWord" [(ngModel)]="newUserModalData.passWord">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="new_email" class="col-sm-2">邮箱</label>
+                        <div class="col-sm-4">
+                            <input id="new_email" type="new_email" class="form-control" name="new_email" [(ngModel)]="newUserModalData.email">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="newUser()">新增</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增用户Modal -->

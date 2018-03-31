@@ -1,0 +1,25 @@
+.form-group label{
+    line-height: 35px;white-space: nowrap;
+}
+@media screen and (min-width:1200px) , (min-width:992px){
+    .container{
+        width: 960px;
+    }
+}
+@media screen and (max-width:600px) {
+	.container {
+		padding: 0px;
+	}
+}
+.article-body{
+    box-shadow: -4px 0 4px rgba(7,17,27,.1), 4px 0 4px rgba(7,17,27,.1), 0 -4px 4px rgba(7,17,27,.1), 0 4px 4px rgba(7,17,27,.1);
+}
+.header{
+    margin-bottom: 20px;
+}
+.carousel .left{	/*切换图片按钮 左*/
+	background-image: none;
+}
+.carousel .right{	/*切换图片按钮 右*/
+	background-image: none;
+}

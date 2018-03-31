@@ -1,0 +1,47 @@
+<div id="loginModal" class="loginModal modal fade" style="top:13%">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4><font>登录</font></h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-4" style="margin-left: 5%;">
+                    <form [formGroup]="userForm" (ngSubmit)="login()" class="form-horizontal">
+                        <div class="form-group">
+                            <label>用户名或邮箱</label>
+                            <div class="col-lg-12">
+                                <input tabindex="1" [ngClass]="{'has-error': formErrors.userName,'valid-success': userForm.value.userName && !formErrors.userName}" class="form-control" 
+                                    type="text" placeholder="昵称或邮箱（比如：王石开）" formControlName="userName" required>
+                                <div *ngIf="formErrors.userName" class="text-danger">{{ formErrors.userName }}</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>密码<a [routerLink]="['/timeWait/userForget']"  data-dismiss="modal">忘记密码？</a><a [routerLink]="['/timeWait/register']"  data-dismiss="modal">注册新账号</a></label>
+                            <div class="col-lg-12">
+                                <input tabindex="2" [ngClass]="{'has-error': formErrors.passWord,'valid-success': userForm.value.passWord && !formErrors.passWord}" class="form-control" 
+                                    type="password" placeholder="密码（比如：王石开）" formControlName="passWord" required>
+                                <div *ngIf="formErrors.passWord" class="text-danger">{{ formErrors.passWord }}</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <button tabindex="3" type="submit" class="btn btn-success form-control">登录</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 hidden-xs" style="height:187px;margin-left: 5%;">
+                    <!--<img alt="140x140" src="../../../assets/img/loginModal/Logo2.jpg" class="img-thumbnail" style="height: 185px;">-->
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-lg-1 col-lg-offset-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

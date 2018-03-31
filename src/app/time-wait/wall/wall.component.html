@@ -1,0 +1,63 @@
+<div class="container-fuild" style="background:url('http://oz1y7s5ij.bkt.clouddn.com/images/common/tiebgbg.jpg');background-size:100%;padding: 20px;" [style.min-height.px]="windowHeight">
+    <div class="container">
+        <div>
+            <button class="btn btn-default" (click)="newStickyNote()" style="color:#555"><span class="glyphicon glyphicon-pencil"></span> 贴纸条</button>
+        </div>
+        <div class="col-sm-3 sticky-note" *ngFor="let item of stickNoteList" (click)="openStickyNote(item)">
+            <h4 style="height:10%">{{item.title}}</h4>
+            <h5 style="height:10%">{{item.userName}}</h5>
+            <h5 style="height:60%">{{item.intro}}</h5>
+            <h5 class="text-right">{{item.date}}</h5>
+        </div>
+        <div class="col-sm-12">
+            <!--底部分页按钮-->
+            <app-pagination [pageClassConfig]="pageClass" [currentPageNum]="pageInfo.currentPageNum" [pagesShow]="pageInfo.pagesShow"
+                [totalPages]="pageInfo.totalPages" [prevPageText]="pageInfo.prevPageText" [nextPageText]="pageInfo.nextPageText"
+                (pageChanged)="pageNavigation($event)">
+            </app-pagination>
+            <!--底部分页按钮-->
+        </div>
+    </div>
+</div>
+
+
+<div id="new-stickyNote" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <!-- <span class="sticky-note-type">#阿斯顿</span> -->
+                <div class="stickyNote-content-top">
+                    <div class="form-group">
+                        <input type="text" class="hidden-input require-input" title="标题" style="font-size:30px;" [placeholder]="isReadOnly ? '' : '请输入你的标题'" [(ngModel)]="stickyNote.title"
+                            data-field="标题" [readonly]="isReadOnly" />
+                    </div>
+                    <div class="form-group" *ngIf="isReadOnly && stickyNote.userName">
+                        <input type="text" class="hidden-input" title="作者" [placeholder]="isReadOnly ? '' : '匿名？不匿名为空'" [(ngModel)]="stickyNote.userName" data-field="作者" [readonly]="isReadOnly"
+                        />
+                    </div>
+                    <div class="form-group" *ngIf="!isReadOnly">
+                        <input type="text" class="hidden-input" title="作者" [placeholder]="isReadOnly ? '' : '匿名？不匿名为空'" [(ngModel)]="stickyNote.anonymous" data-field="匿名" [readonly]="isReadOnly"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="hidden-input" title="介绍" [placeholder]="isReadOnly ? '' : '简单介绍'" [(ngModel)]="stickyNote.intro" data-field="简单介绍"
+                            [readonly]="isReadOnly" />
+                    </div>
+                </div>
+                <div class="stickyNote-content-mid">
+                    <div class="form-group">
+                        <textarea type="text" class="hidden-input require-input" title="正文" placeholder="正文" style="width:100%;" rows="10" [(ngModel)]="stickyNote.value"
+                            data-field="正文" [readonly]="isReadOnly"></textarea>
+                    </div>
+                </div>
+                <div class="stickyNote-content-bottom">
+                    <div class="form-group text-center">
+                        <h5 class="text-right" style="font-weight:100;font-family:'微软雅黑';">{{stickyNote.date}}</h5>
+                        <button *ngIf="!isReadOnly" class="btn btn-success" style="font-weight: 100;" (click)="submitStickyNote()">贴上墙</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

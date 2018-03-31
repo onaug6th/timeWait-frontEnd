@@ -1,0 +1,103 @@
+<div [@simAnim]="'fadeIn'">
+    <div id="blogTopNav" class="blogTopNav col-xs-12">
+        <div class="blogTopNav-left col-sm-2 col-xs-1"></div>
+        <div class="blogTopNav-mid col-xs-8">
+            <div class="blogTopNav-content">
+                <ul class="menuNav">
+                    <li>
+                        <a href="" [routerLink]="['/blog/default',userInfo.userID]" routerLinkActive="active">首页</a>
+                    </li>
+                    <li>
+                        <a href="" [routerLink]="['/blog/about',userInfo.userID]" routerLinkActive="active">关于</a>
+                    </li>
+                    <!--<li><a href="#">注册</a></li>
+                    <li><a href="#">登录</a></li>-->
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="blogTopNav-right col-xs-2">
+            <img alt="140x140" class="blogTopNav-avatar img-circle" [src]="userInfo.avatar ? userInfo.avatar : avatarCDN">
+            <div class="avatar-intro">
+                <div class="intro-body"></div>
+            </div>
+        </div> -->
+    </div>
+    <!-- <div id="background" class="col-xs-12" style=""> -->
+    <div id="background" class="col-xs-12" style="background: gray;" [style.background-image]="userInfo.blogBackground ? 'url('+userInfo.blogBackground+'?time='+timeUntil1970+')' : '' ">
+        <div class="text-center intro">
+            <h3>{{userInfo.intro}}</h3>
+        </div>
+        <div class="blog-menu col-xs-6">
+            <span class="glyphicon glyphicon-align-justify" (click)="menuToggle()"></span>
+        </div>
+    </div>
+    <div class="col-xs-12" style="background: #eee;">
+        <router-outlet></router-outlet>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div class="side-menu">
+    <div class="modal-backdrop fade in" (click)="menuToggle()"></div>
+    <div id="sidebar-main" class="sidebar-main">
+        <div class="sidebar-header header-cover" [style.background-image]="userInfo.blogBackground ? 'url('+userInfo.blogBackground+'?time='+timeUntil1970+')' : '' ">
+            <div class="top-bar"></div>
+            <div class="sidebar-image">
+                <img class="img-circle" [src]="userInfo.avatar ? userInfo.avatar : avatarCDN" alt="user avatar">
+            </div>
+            <a class="sidebar-brand clearfix">
+                <p>{{userInfo.userName}}</p>
+                <p>{{userInfo.email}}</p>
+            </a>
+        </div>
+        <ul class="nav sidebar-nav">
+            <li *ngIf="currentLoggedInUser.userID == userInfo.userID">
+                <a routerLink="/blog/writePost" (click)="menuToggle()">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 日志
+                </a>
+            </li>
+            <li *ngIf="currentLoggedInUser.userID == userInfo.userID">
+                <a (click)="openUploadModal()">
+                    <span class="glyphicon glyphicon-picture" aria-hidden="true"></span> 封面
+                </a>
+            </li>
+            <li *ngIf="currentLoggedInUser.userID == userInfo.userID" class="divider"></li>
+            <li id="sidebar-first-li">
+                <a [routerLink]="['/blog/default',userInfo.userID]" (click)="menuToggle()">主页</a>
+            </li>
+            <li class="dropdown clearfix">
+                <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-book"></i> 分类
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of typeList">
+                        <a class="sidebar_archives-link" (click)="useDefaultMethod(item.name)">{{item.name}}  <span class="label label-primary pull-right">{{item.length}}</span>
+                            
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown clearfix">
+                <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-inbox"></i> 时间
+                    <b class="caret"></b>
+                </a>
+                <!-- <ul class="dropdown-menu">
+                    <li>
+                        <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017
+                            <span class="sidebar_archives-count">1</span>
+                        </a>
+                    </li>
+                </ul> -->
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a [routerLink]="['/blog/about',userInfo.userID]"  title="关于我" (click)="menuToggle()">
+                 关于我</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<file-upload [modalConfig]="fileUploadModal" (close)="updateUserBlogBackground($event)"></file-upload>

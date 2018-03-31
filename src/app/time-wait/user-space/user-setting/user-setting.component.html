@@ -1,0 +1,191 @@
+<div class="container">
+    <!-- <div class="form-group" style="padding-top: 15px; padding-left: 15px;">
+        <button [routerLink]="['/timeWait/userSpace']" routerLinkActive="active" 
+                class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    </div> -->
+    <div class="profileleft col-sm-3">
+        <div class="Avatar">
+            <img alt="140x140" [src]="avatarCDN" class="img-circle" title="更换你帅气的头像" (click)="openUploadModal()"/>
+            <label>{{currentLoggedInUser.userName}}</label>
+        </div>
+        <div id="subNav">
+            <ul class="nav nav-list well" style="padding:0px;">
+                <li (click)="toggleSetting(1)" [ngClass]="{'active':nowType == 1}">
+                    <a><span class="glyphicon glyphicon-pencil"></span>基础资料</a>
+                </li>
+                <li (click)="toggleSetting(2)" [ngClass]="{'active':nowType == 2}">
+                    <a><span class="glyphicon glyphicon-user"></span>个人信息</a>
+                </li>
+                <li (click)="toggleSetting(3)" [ngClass]="{'active':nowType == 3}">
+                    <a><span class="glyphicon glyphicon-cog"></span>账户安全</a>
+                </li>
+                <li (click)="toggleSetting(4)" [ngClass]="{'active':nowType == 4}">
+                    <a><span class="glyphicon glyphicon-envelope"></span>通知</a>
+                </li>
+                <li (click)="toggleSetting(5)" [ngClass]="{'active':nowType == 5}">
+                    <a>帮助</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="profileright col-sm-8">
+        <form [formGroup]="importantProfileForm" (ngSubmit)="submitImportantProfile()" class="form-horizontal" *ngIf="nowType == 1">
+            <div class="form-group">
+                <label for="userName" class="col-sm-2">昵称</label>
+                <div class="col-sm-4">
+                    <input id="userName" [ngClass]="{'has-error': formErrors.userName,'valid-success': importantProfileForm.value.userName && !formErrors.userName}" class="form-control" 
+                    type="text" placeholder="昵称或邮箱（比如：王石开）" formControlName="userName" required>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                    <p *ngIf="formErrors.userName" class="text-danger" style="font-size:12px">
+                        {{ formErrors.userName }}
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2">邮箱</label>
+                <div class="col-sm-4">
+                    <input id="email" [ngClass]="{'has-error': formErrors.email,'valid-success': importantProfileForm.value.email && !formErrors.email}" class="form-control" 
+                        type="email" placeholder="邮箱（比如：王石开）" formControlName="email" required>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                    <p *ngIf="formErrors.email" class="text-danger" style="font-size:12px">
+                        {{ formErrors.email }}
+                    </p>
+                </div>
+            </div>
+            <div class="form-group text-center" id="refs-gerenshezhi">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+        <form id="profileForm" class="form-horizontal" (ngSubmit)="submitBaseProfile()" [hidden]="nowType!=2">
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">真实姓名</label>
+                <div class="col-lg-4">
+                    <input id="realName" class="form-control" type="text" name="realName" [(ngModel)]="baseProfileInfo.realName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2">性别</label>
+                <div class="col-sm-4">
+                    <input id="gender" class="form-control" type="text" name="gender" placeholder="建议填女或男" [(ngModel)]="baseProfileInfo.gender">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">手机号码</label>
+                <div class="col-lg-4">
+                    <input id="phone" class="form-control" type="text" name="phone" [(ngModel)]="baseProfileInfo.phone">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">出生日期</label>
+                <div class="col-lg-4">
+                    <input id="birthDay" class="form-control require-input daterangepicker-single" 
+                            name="birthDay" type="text" [(ngModel)]="baseProfileInfo.birthDay"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">微博</label>
+                <div class="col-lg-4">
+                    <input id="weibo" class="form-control" name="weibo" type="text" [(ngModel)]="baseProfileInfo.weibo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">QQ</label>
+                <div class="col-lg-4">
+                    <input id="qq" class="form-control form-fields" name="qq" type="text" [(ngModel)]="baseProfileInfo.qq">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">WeChat</label>
+                <div class="col-lg-4">
+                    <input id="weChat" class="form-control form-fields" name="weChat" type="text" [(ngModel)]="baseProfileInfo.weChat">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">个人简介</label>
+                <div class="col-lg-10">
+                    <textarea id="intro" class="form-control" name="intro" rows="3" [(ngModel)]="baseProfileInfo.intro"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">中午吃了什么</label>
+                <div class="col-lg-4">
+                    <input id="lunch" class="form-control form-fields" name="lunch" type="text" [(ngModel)]="baseProfileInfo.lunch">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-md-2 col-sm-4">联系地址</label>
+                <div class="col-lg-4">
+                    <input id="address" class="form-control" type="text" name="address" [(ngModel)]="baseProfileInfo.address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 col-sm-4">支付宝账号密码</label>
+                <div class="col-lg-4">
+                    <input id="zfb" class="form-control form-fields" name="zfb" type="text" placeholder="选填" [(ngModel)]="baseProfileInfo.zfb">
+                </div>
+            </div>
+            <div class="form-group" #WZRYSelect >
+                <label class="col-md-2 col-sm-4">打王者荣耀吗？</label>
+                <div class="col-lg-4">
+                    <select id="wzry" class="form-control require-input" name="wzry" data-field="相框尺寸" (change)="hideWZRYSelect($event)" [(ngModel)]="baseProfileInfo.wzry">
+                        <option value="1">打</option>
+                        <option value="1">我也玩</option>
+                        <option>破下拉框都没有我的选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group text-center" id="refs-zhanghuxiugai">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+        <form id="modifyForm" class="form-horizontal" *ngIf="nowType == 3">
+            <button class="btn btn-default" data-toggle="modal" data-target=".update-password">改密码</button>
+        </form>
+        <form class="form-horizontal" *ngIf="nowType == 4">
+            <label class="checkbox-inline">
+                    <input type="checkbox" /> <label>会议信息</label>接收来自月球的问候
+            </label>
+        </form>
+        <h5 *ngIf="nowType == 5">没有帮助</h5>
+    </div>
+</div>
+
+<!-- 修改密码Modal -->
+<div id="update-password" class="update-password modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center">修改密码</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form class="form-horizontal text-right">
+                    <div class="form-group">
+                        <label for="oldPassWord" class="col-xs-4">旧密码</label>
+                        <div class="col-xs-7">
+                            <input id="oldPassWord" type="password" class="require-input form-control" name="oldPassWord" [(ngModel)]="updataModalData.oldPassWord" data-field="旧密码"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassWord" class="col-xs-4">新密码</label>
+                        <div class="col-xs-7">
+                            <input id="newPassWord" type="password" class="require-input form-control" name="newPassWord" [(ngModel)]="updataModalData.newPassWord" data-field="新密码"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                <button class="btn btn-primary" (click)="updatePassword()">我改！</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改密码Modal -->
+
+<file-upload [modalConfig]="fileUploadModal" (close)="updateUserAvatar($event)"></file-upload>

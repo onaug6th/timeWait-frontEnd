@@ -1,0 +1,66 @@
+<div class="main" id="home">
+    <p class="alert">{{welcomeTextObject.welcomeTimeText}}<br />
+        <font size="1">{{welcomeTextObject.welcomeRandomText}}</font><br />
+        <font size="1" color="red">{{welcomeTextObject.welcomeSpecilText}}</font>
+    </p>
+    <div class="row">
+        <h4 class="page-header">账户余额</h4>
+        <div class="accountDetail row">
+            <div class="col-sm-12">
+                <div style=" width: 100%; position: absolute; height: 100%; z-index: 2; background: rgba(255, 255, 255, 0.86); ">
+                    <h3>程序员还没写完</h3>
+                </div>
+                <div class="col-sm-4" style="padding-left: 0px;">
+                    <label>RMB：</label><strong style="font-size:24px;">0</strong>.33元
+                </div>
+                <div class="col-sm-4" style="padding-left: 0px;">
+                    <label>深职币：</label><strong style="font-size:24px;">0</strong>个
+                </div>
+                <div class="col-sm-12" style="padding-left: 0px;margin-top: 10px;">
+                    <button class="btn btn-sm btn-success">充点小钱</button>
+                    <button class="btn btn-sm btn-danger">提现</button>
+                    <button class="btn btn-sm btn-warning">转账</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h4 class="page-header">概览</h4>
+        <div class="col-xs-6 col-sm-4">
+            <div style=" width: 100%; position: absolute; height: 100%; z-index: 2; background: rgba(255, 255, 255, 0.86); ">
+                <h3>程序员还没写完</h3>
+            </div>
+            <div class="placeholder" style="background-color: #3598dc;">
+                <div class="visual">
+                    <i class="glyphicon glyphicon-camera"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> 印象 </div>
+                    <div class="desc"> 0 个</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4">
+            <div class="placeholder" style="background-color: #e7505a;" [routerLink]="['/timeWait/userSpace/blogSetting']">
+                <div class="visual">
+                    <i class="glyphicon glyphicon-book"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> 文章 </div>
+                    <div class="desc"> {{dataCount.article}} 条</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-4 col-md-4">
+            <div class="placeholder" style="background-color: #32c5d2;" [routerLink]="['/timeWait/userSpace/forumSetting']">
+                <div class="visual">
+                    <i class="glyphicon glyphicon-tags"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> 帖子 </div>
+                    <div class="desc"> {{dataCount.forumPost}} 个</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

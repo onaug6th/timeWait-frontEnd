@@ -1,0 +1,48 @@
+label{
+    line-height: 33px;
+    white-space: nowrap;
+}
+.Topalert {
+	background: #f5f8fd;
+	color: #010407;
+	border-left: 5px solid #8bb4e7;
+}
+.portlet{
+    padding: 12px 20px 15px;
+    background-color: #fff;
+    border-radius: 5px;height: 400px;
+}
+.portlet .portlet-title{
+    padding: 0;
+    min-height: 48px;
+    border-bottom: 1px solid #eef1f5;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.portlet .caption{
+    padding: 10px 0;
+    float: left;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+}
+.tool-bar{
+    margin: 10px 0px;
+}
+.search-bar{
+    margin: 10px 0px;
+}
+.article-manager-table{
+    
+}
+th,td{
+    text-align: center;
+}
+
+.btn-primary .dropdown-menu{
+    top:100px;
+    left:inherit;
+}
+.modal-body{
+    overflow-y: scroll; height: 500px;
+}

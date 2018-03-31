@@ -1,0 +1,67 @@
+<div class="registerWarp col-sm-12">
+    <div class="registerBody col-sm-9 col-lg-offset-2">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="hero-unit">
+                    <h1>注册一个账号</h1>
+                    <p>join us !</p>
+                    <span style="font-size:12px" class="label label-primary">注册时遇到问题可以点击右侧小助手获取帮助哦</span>
+                </div>
+            </div>
+            <div class="body-Right col-md-5">
+                <form [formGroup]="userForm" (ngSubmit)="register()" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input id="userName" [ngClass]="{'has-error': formErrors.userName,'valid-success': userForm.value.userName && !formErrors.userName}" class="form-control" 
+                                    type="text" placeholder="昵称（比如：王石开）" formControlName="userName" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.userName" class="text-danger" style="font-size:12px">
+                                {{ formErrors.userName }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input [ngClass]="{'has-error': formErrors.passWord,'valid-success': userForm.value.passWord && !formErrors.passWord}" class="form-control" 
+                                    type="password" placeholder="密码（比如：王石开）" formControlName="passWord"  validateEqual="confirmPassWord" reverse="true" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.passWord" class="text-danger" style="font-size:12px">
+                                {{ formErrors.passWord }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input [ngClass]="{'has-error': formErrors.confirmPassWord,'valid-success': userForm.value.confirmPassWord && !formErrors.confirmPassWord}" class="form-control" 
+                                    type="password" placeholder="重复输入密码" formControlName="confirmPassWord" validateEqual="passWord" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.confirmPassWord" class="text-danger" style="font-size:12px">
+                                {{ formErrors.confirmPassWord }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input [ngClass]="{'has-error': formErrors.email,'valid-success': userForm.value.email && !formErrors.email}" class="form-control" 
+                                    type="email" placeholder="邮箱（比如：王石开）" formControlName="email" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.email" class="text-danger" style="font-size:12px">
+                                {{ formErrors.email }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="loginBtn btn btn-warning col-lg-6">注册</button>
+                    </div>
+                    <p style="font-size:12px">
+                        点击“注册”，即表示您同意我们的 服务条款 和 隐私政策。我们不会向您发送帐户相关的电子邮件。因为我们很懒
+                    </p><small>——<cite>沃兹基硕德</cite></small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

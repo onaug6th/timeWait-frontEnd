@@ -1,0 +1,34 @@
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+li{
+    list-style: none;
+}
+.function-box{
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    height:115px;
+}
+.function-box .glyphicon{
+    font-size: 24px;
+    margin:15px 0px 10px 0px;
+}
+.function-box .function-box-intro{
+    display: block;
+}
+.function-box:hover{
+    background: #60afea;
+    color:white;
+    transition: 0.3s;
+}
+
+.function-box-active{
+    background: #60afea;
+    color:white;
+}
+
+.function-content{
+    margin-top:10px;
+}

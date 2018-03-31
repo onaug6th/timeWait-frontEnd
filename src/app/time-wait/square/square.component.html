@@ -1,0 +1,160 @@
+<div class="container"  [@simAnim]="'zoomIn'">
+    <!--滚动广告开始-->
+    <div class="square-top clearfix">
+        <div class="form-group">
+            <h4 class="text-center">广场来到欢迎</h4>
+        </div>
+        <div class="carousel slide" data-interval="5000" id="carousel-653977">
+            <div class="carousel-inner" style="border-radius: 4px;">
+                <div class="item active">
+                    <div class="col-md-12 column" style="padding: 0px;">
+                        <div class="jumbotron">
+                            <h1>欢迎你!</h1>
+                            <p>吃饭未</p>
+                            <p>
+                                <a class="btn btn-primary btn-large" href="#">了解更多
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-md-12 column" style="padding: 0px;">
+                        <div class="jumbotron">
+                            <h1>欢迎你!</h1>
+                            <p>吃饭未</p>
+                            <p>
+                                <a class="btn btn-primary btn-large" href="#">了解更多
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-md-12 column" style="padding: 0px;">
+                        <div class="jumbotron">
+                            <h1>其实不是同一个标题!</h1>
+                            <p>吃饭未</p>
+                            <p>
+                                <a class="btn btn-primary btn-large" href="#">了解更多
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-653977" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#carousel-653977" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+        <hr>
+    </div>
+    <!--滚动广告结束-->
+    <div class="clearfix form-group">
+        <div class="clearfix">
+            <div class="col-md-3" style="padding:10px;">
+                <h4>公告</h4>
+                <div class="forum-post" *ngFor="let item of noticeList" style="padding-top:10px;">
+                    <div [routerLink]="['/timeWait/forum/forumPostDetail',item['_id']]" style="cursor:pointer">
+                        <p class="forum-post-title" style="color:#8492A6;font-size:13px">{{item.postTitle}}<span class="glyphicon glyphicon-chevron-right pull-right"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="memory col-md-5">
+                <h4>印象</h4>
+                <div class="memory-box" style="background:url('http://oz1y7s5ij.bkt.clouddn.com/images/common/memory.JPG')">
+                    <div class="memory-box-photo">
+        
+                    </div>
+                    <div class="memory-box-detail">
+                        <div class="form-group memory-box-icon">
+        
+                        </div>
+                        <button class="btn btn-default">Read Detail</button>
+                    </div>
+                </div>
+            </div>
+            <div class="memory col-md-4" routerLink="/timeWait/wall">
+                <h4>墙</h4>
+                <div class="memory-box"  style="background:url('http://oz1y7s5ij.bkt.clouddn.com/images/common/yearHasFish.jpg')">
+                    <div class="memory-box-photo">
+        
+                    </div>
+                    <div class="memory-box-detail">
+                        <div class="form-group memory-box-icon">
+        
+                        </div>
+                        <button class="btn btn-default">墙</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="clearfix form-group">
+        <div class="clearfix">
+            <div class="memory col-md-8"  routerLink="/timeWait/forum">
+                <h4>论坛</h4>
+                <div class="memory-box" style="background:url('http://oz1y7s5ij.bkt.clouddn.com/images/common/kFriends.jpg');background-position: 20% 90%;">
+                    <div class="memory-box-photo">
+        
+                    </div>
+                    <div class="memory-box-detail">
+                        <div class="form-group memory-box-icon">
+        
+                        </div>
+                        <button class="btn btn-default">Read Detail</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="memory col-md-4">
+                <h4>给我留言</h4>
+                <a href="http://www.onaug6th.com/timeWait/forum/forumPostDetail/5a7d94a98131290b7c4042b8">
+                    <div class="memory-box" style="background:url('http://oz1y7s5ij.bkt.clouddn.com/goodDesigner.gif');background-size: 100% 100% !important;">
+                        <div class="memory-box-photo">
+            
+                        </div>
+                        <div class="memory-box-detail">
+                            
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+        <hr>
+    </div>
+    <div class="clearfix form-group">
+        <div class="clearfix">
+            <div class="form-group">
+                <h4 class="text-center">特别用户</h4>
+            </div>
+            <!-- <div class="memory col-md-4">
+                <div class="memory-img">
+
+                </div>
+                <h5 class="memory-title">这个印象的名字</h5>
+                <p class="memory-date">2017-08-06</p>
+                <p class="memory-location">安徽蚌埠</p>
+            </div> -->
+            <div class="memory col-md-3 text-center">
+                <img alt="用户头像" class="img-circle" [src]="avatarCDN" style="width: 80px;margin:10px 20px;">
+                <h4>忘记密码次数最多</h4>
+            </div>
+            <div class="memory col-md-3 text-center">
+                <img alt="用户头像" class="img-circle" [src]="avatarCDN" style="width: 80px;margin:10px 20px;">
+                <h4>成就最多</h4>
+            </div>
+            <div class="memory col-md-3 text-center">
+                <img alt="用户头像" class="img-circle" [src]="avatarCDN" style="width: 80px;margin:10px 20px;">
+                <h4>发帖最多</h4>
+            </div>
+            <div class="memory col-md-3 text-center">
+                <img alt="用户头像" class="img-circle" [src]="avatarCDN" style="width: 80px;margin:10px 20px;">
+                <h4>点赞最多</h4>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

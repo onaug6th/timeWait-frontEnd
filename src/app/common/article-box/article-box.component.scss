@@ -1,0 +1,94 @@
+.col-md-4{
+    padding: 0px 10px 0px 10px;
+    margin: 20px 0px 20px 0px;
+    transition: 1s;
+}
+.col-md-8{
+    padding: 0px 10px 0px 10px;
+    margin: 20px 0px 20px 0px;
+    transition: 1s;
+}
+
+.col-md-4:hover{
+    transform:scale(1.02,1.02) ;
+}
+
+.col-md-8:hover{
+    transform:scale(1.02,1.02) ;
+}
+
+.col-md-8 .article-type{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #999;
+    padding: 3px 10px;
+    background: #f1f1f1;
+    font-size: 14px;
+}
+
+.article-box{
+    padding: 0px;
+    background: white;
+    background-size: cover !important;
+    height:500px;
+    box-shadow: -4px 0 4px rgba(7,17,27,.1),
+                4px 0 4px rgba(7,17,27,.1), 
+                0 -4px 4px rgba(7,17,27,.1),
+                0 4px 4px rgba(7,17,27,.1);
+}
+
+.col-md-4 .article-box .article-type{
+    position: absolute;
+    top: 0;
+    color: #999;
+    padding: 3px 10px;
+    background: #f1f1f1;
+    font-size: 14px;
+}
+
+.article-box-photo{
+    cursor: pointer;
+    height:60%;
+    background-size:cover !important; 
+    // background: aliceblue;
+}
+
+.col-md-4 .article-box-detail{
+    height: 40%;
+    padding: 0px 15px 0px 15px;
+}
+
+.col-md-8 .article-box-detail{
+    height: 40%;
+    padding: 0px 15px 0px 15px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.article-box-detail h4{
+    font-weight: bold;
+}
+
+.article-box-icon{
+    padding: 10px;
+    font-size: 20px;
+}
+
+.article-box-intro{
+    font-size: 13px;
+    height: 45px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.article-box .glyphicon-pencil{
+    color:#0083cb;
+}
+
+.article-box .glyphicon-picture{
+    color:#fd342e;
+}
+
+.article-box .glyphicon font{
+    margin-left: 5px;
+}

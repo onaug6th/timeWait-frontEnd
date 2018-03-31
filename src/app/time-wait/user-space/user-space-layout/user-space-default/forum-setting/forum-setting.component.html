@@ -1,0 +1,47 @@
+<div class="form-group" style="padding-top: 15px; padding-left: 15px;">
+    <button [routerLink]="['/timeWait/userSpace']" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+</div>
+<table class="setting-table table table-bordered table-hover">
+    <tr>
+        <th>帖子名称</th>
+        <th>帖子分类</th>
+        <th>发布日期</th>
+        <th>阅读</th>
+        <th>评论</th>
+        <th>操作</th>
+    </tr>
+    <tr *ngFor="let item of forumPostList">
+        <td>
+            <!-- 文章名称 -->
+            {{item.postTitle}}
+        </td>
+        <td>
+            <!-- 文章分类 -->
+            {{item.postType}}
+        </td>
+        <td>
+            <!-- 发布日期 -->
+            {{item.postDate}}
+        </td>
+        <td>
+            <!-- 阅读 -->
+            {{item.postRead}}
+        </td>
+        <td>
+            <!-- 评论 -->
+            {{item.commentCount}}
+        </td>
+        <td>
+            <!-- 操作 -->
+            <button class="btn btn-danger" (click)="deleteForumPost(item['_id'])">删除</button>
+        </td>
+    </tr>
+</table>
+<!--底部分页按钮-->
+<app-pagination
+    [currentPageNum]="pageInfo.currentPageNum"
+    [pagesShow]="pageInfo.pagesShow"
+    [totalPages]="pageInfo.totalPages"
+    (pageChanged)="pageNavigation($event)">
+</app-pagination>
+<!--底部分页按钮-->

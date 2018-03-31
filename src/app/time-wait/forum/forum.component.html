@@ -1,0 +1,86 @@
+<div class="container" style="padding-top:20px" [@simAnim]="'zoomIn'">
+    <div class="clearfix">
+        <div class="forum-sidebar col-sm-3">
+            <div class="row">
+                <div class="sign-in col-xs-6 text-center">
+                    <p class="day" style="font-size: 18px;">星期{{dayDictionary[nowDay]}}</p>
+                    <p class="date" style="font-weight: 700;">{{nowDate}}</p>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-lg btn-danger" (click)="signIn()">签到</button>
+                </div>
+            </div>
+            <div class="row">
+                <h4>板块分类</h4>
+                <ol class="list-unstyled">
+                    <li class="forum-type-box col-sm-6 col-xs-3" (click)="toggleForumType(1)"
+                        [ngClass]="{'forum-type-box-active': nowForumType == 1}">
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                        <span class="forum-type-box-intro">交流</span>
+                    </li>
+                    <li class="forum-type-box col-sm-6 col-xs-3" (click)="toggleForumType(2)"
+                        [ngClass]="{'forum-type-box-active': nowForumType == 2}">
+                        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+                        <span class="forum-type-box-intro">学习</span>
+                    </li>
+                    <li class="forum-type-box col-sm-6 col-xs-3" (click)="toggleForumType(3)"
+                        [ngClass]="{'forum-type-box-active': nowForumType == 3}">
+                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                        <span class="forum-type-box-intro">BUG反馈</span>
+                    </li>
+                    <li class="forum-type-box col-sm-6 col-xs-3" (click)="toggleForumType(4)"
+                        [ngClass]="{'forum-type-box-active': nowForumType == 4}">
+                        <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                        <span class="forum-type-box-intro">公告</span>
+                    </li>
+                </ol>
+            </div>
+            <hr>
+        </div>
+        <!-- 文章列表与操作 -->
+        <div class="col-sm-8  col-sm-offset-1 forum-main">
+            <!--用户操作开始-->
+            <div class="col-sm-12" *ngIf="!currentLoggedInUser.userID">
+                <h4 style="font-weight:bold">欢迎你，你好像还没有<a data-toggle="modal" data-target=".loginModal">登陆</a></h4>
+                <hr>
+            </div>
+            <div *ngIf="currentLoggedInUser.userID" class="forum-operate col-md-12">
+                <div class="col-sm-1 col-xs-2" style="padding: 0px 5px;">
+                    <img alt="用户头像" [src]="currentLoggedInUserBaseInfo.avatar ? currentLoggedInUserBaseInfo.avatar : avatarCDN" style="width: 40px;float:right;border-radius:3px;">
+                </div>
+                <div class="arrow-left"></div>
+                <ul class="kind nav col-sm-10 col-xs-9">
+                    <li (click)="openNewPostModal()">
+                        <a><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>发布新内容</a>
+                    </li>
+                </ul>
+            </div>
+            <!--用户操作结束-->
+            <div class="forum-post-list col-md-12">
+                <h4 *ngIf="forumPostList.length == 0">这个板块下还没有内容</h4>
+                <div class="forum-post" *ngFor="let item of forumPostList">
+                    <div [routerLink]="['/timeWait/forum/forumPostDetail',item['_id']]" style="cursor:pointer">
+                        <h4 class="forum-post-title">{{item.postTitle}}</h4>
+                        <p class="forum-post-meta">{{item.postDate}}&nbsp;
+                            <a>{{item.postAuthor}}</a>
+                        </p>
+                        <p class="forum-post-simple">{{item.postIntro}}...</p>
+                    </div>
+                    <!-- <p class="forum-post-simple text-right"><span (click)="deleteForumPost(item['_id'])">删除</span></p> -->
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--底部分页按钮-->
+            <app-pagination
+                [currentPageNum]="pageInfo.currentPageNum"
+                [pagesShow]="pageInfo.pagesShow"
+                [totalPages]="pageInfo.totalPages"
+                (pageChanged)="pageNavigation($event)">
+            </app-pagination>
+            <!--底部分页按钮-->
+        </div>
+    </div>
+</div>
+<forum-new-post (isRefresh)="refreshPostList()"></forum-new-post>

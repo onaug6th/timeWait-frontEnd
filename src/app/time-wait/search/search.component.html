@@ -1,0 +1,61 @@
+<div class="container" style="height:600px;padding-top:20px;">
+    <div class="col-sm-12">
+        <h4>你在找什么？</h4>
+    </div>
+    <div class="row" style="padding-bottom:5px;">
+        <div class="col-xs-10">
+            <input type="text" class="form-control" [(ngModel)]="searchText" (keyup.enter)="search()">
+        </div>
+        <div class="col-xs-2" style="padding:0px;">
+            <button class="btn btn-default" (click)="search()">搜索</button>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <h4 *ngIf="queryUserData.length == 0">找不到相关用户</h4>
+        <h4 *ngIf="queryUserData.length > 0" style="margin-bottom:40px;">找到以下相关用户</h4>
+        <div *ngFor="let item of queryUserData;let i = index" class="clearfix" style="margin-bottom:20px;">
+            <div class="user-info {{'info' + i }}">
+                <div class="col-xs-2 col-sm-1" style="padding: 5px;">
+                    <img class="user-avatar img-circle" alt="用户头像" [attr.data-index]="i" (mouseover)="showDetailInfo(i)"
+                        [src]="item.detail.length > 0 ? (item.detail[0].avatar ? item.detail[0].avatar : avatarCDN) : avatarCDN"  
+                        style="width: 40px;float:right;">
+                    <div class="intro-detail-warp intro-detail-warp{{i}}" (mouseleave)="hideDetailInfo(i)">
+                        <div class="intro-detail intro-detail{{i}}">
+                            <div class="detail-background" 
+                                    [style.background-image]="
+                                    item.detail.length > 0 ? (item.detail[0].blogBackground ? 'url('+item.detail[0].blogBackground+')' : 'url('+avatarCDN+')') : 'url('+avatarCDN+')'"
+                            >
+                            </div>
+                            <div class="detail-content">
+                                <h4>{{item.userName}}</h4>
+                            </div>
+                            <div class="detail-operate">
+                                <button class="btn btn-sm btn-default" (click)="goToBlog(item._id)">踩踩他的空间</button>
+                                <button class="btn btn-sm btn-default">他的印象</button>
+                                <button class="btn btn-sm btn-default">聊天</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <p class="user-name" style="margin-bottom: 0px;">{{item.userName}}</p>
+                    <p class="user-intro">{{
+                        item.detail.length > 0 ? (item.detail[0].intro ? item.detail[0].intro : ""):""
+                    }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="col-sm-12">
+        <h4>找到以下相关印象</h4>
+    </div>
+    <div class="col-sm-12">
+        <h4>找到以下相关文章</h4>
+    </div>
+    <div class="col-sm-12">
+        <h4>找到以下相关文章</h4>
+    </div> -->
+</div>

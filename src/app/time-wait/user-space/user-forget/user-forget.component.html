@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="dashboard" *ngIf="dashboardShow==true">
+        <div class="banner row">
+            <h1>选择你的找回密码方式</h1>
+        </div>
+        <div class="center row" *ngIf="anotherMethod==false" [@simAnim]="'fadeIn'">
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(1)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </div>
+                <p>通过邮箱找回</p>
+                <font>通过注册时填的邮箱来找回你心爱的密码</font>
+            </div>
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(2)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-phone"></i>
+                </div>
+                <p>通过手机号找回</p>
+                <font>通过注册时填的手机号来找回你心爱的密码</font>
+            </div>
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(3)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-comment"></i>
+                </div>
+                <p>通过申诉找回</p>
+                <font>通过申诉来找回你心爱的密码</font>
+            </div>
+        </div>
+        <div class="center row" *ngIf="anotherMethod==true" [@simAnim]="'fadeIn'">
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(4)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-yen"></i>
+                </div>
+                <p>通过金钱贿赂找回</p>
+                <font>果然只有万恶的金钱才能找回我心爱的密码了吗</font>
+            </div>
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(5)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </div>
+                <p>通过密码找回</p>
+                <font>好像很有道理的样子</font>
+            </div>
+            <div class="method-box col-md-4 text-center" (click)="chooseMethod(6)">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-thumbs-down"></i>
+                </div>
+                <p>不找了</p>
+                <font></font>
+            </div>
+        </div>
+        <div class="row text-right">
+            <a *ngIf="anotherMethod==false" 
+                style="cursor:pointer" (click)="toggleMethod()">没有你想要的方式？
+            </a>
+            <a *ngIf="anotherMethod==true"
+                style="cursor:pointer" (click)="toggleMethod()">我还是想要正常的方式
+            </a>
+        </div>
+    </div>
+    <div class="operate-box row" *ngIf="nowMethod==1" [@simAnim]="'fadeIn'">
+        <button class="btn btn-success" (click)="returnDashboard()"><span class="glyphicon glyphicon-chevron-left"></span>选别的方式</button>
+        <div class="tip">
+            <p>输入你注册时填的邮箱</p>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 form-group">
+                <div class="col-sm-10 col-xs-9">
+                    <input type="text" class="form-control">
+                </div>
+                <button class="btn btn-default" (click)="findPassword(1)">确定</button>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                <button class="btn btn-danger">我突然不记得邮箱了</button>
+            </div>
+        </div>
+    </div>
+    <div class="operate-box row" *ngIf="nowMethod==2" [@simAnim]="'fadeIn'">
+        <div class="tip">
+            <p>输入你注册时填的手机号码</p>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 form-group">
+                <div class="col-sm-10 col-xs-9">
+                    <input type="text" class="form-control">
+                </div>
+                <button class="btn btn-default" (click)="findPassword(2)">确定</button>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                <button class="btn btn-danger">我突然不记得手机号码了</button>
+                <button class="btn btn-success" (click)="returnDashboard()">选别的方式</button>
+            </div>
+        </div>
+    </div>
+    <div class="operate-box row" *ngIf="nowMethod==3" [@simAnim]="'fadeIn'">
+        <div class="tip">
+            <p>请填写你的申诉理由</p>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 form-group">
+                <div class="col-sm-10 col-xs-12">
+                    <textarea id="reason" class="form-control" name="reason" rows="6" placeholder="文体不限诗歌除外"></textarea>
+                </div>
+                <button style="position:absolute;top:25%;" class="btn btn-default" (click)="findPassword(3)">确定</button>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                <button class="btn btn-success" (click)="returnDashboard()">选别的方式</button>
+            </div>
+        </div>
+    </div>
+    <div class="operate-box row" *ngIf="nowMethod==4" [@simAnim]="'fadeIn'">
+        <div class="tip">
+            <p>请往我的深圳通里打500块</p>
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <input type="text" class="form-control" disabled placeholder="开玩笑的，千万不能在不可信的网站进行敏感操作！">
+                </div>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                <button class="btn btn-success" (click)="returnDashboard()">选别的方式</button>
+            </div>
+        </div>
+    </div>
+    <div class="operate-box row" *ngIf="nowMethod==5" [@simAnim]="'fadeIn'">
+        <div>
+            <p class="tip">点击下方按钮开始通过用密码找回密码</p>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 form-group">
+                <div class="col-sm-12 col-xs-12 text-center">
+                    <button class="btn btn-primary" data-toggle="modal" data-target=".loginModal"
+                            (click)="passWordFindPassWord()">通过密码找密码</button>
+                </div>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                <button class="btn btn-success" (click)="returnDashboard()">选别的方式</button>
+            </div>
+        </div>
+    </div>
+</div>

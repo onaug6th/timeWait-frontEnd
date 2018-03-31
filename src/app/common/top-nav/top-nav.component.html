@@ -1,0 +1,72 @@
+<div class="clearfix">
+    <div class="column">
+        <nav #nav class="topnavbar navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1" id="topnav-hide-btn">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <div style="width:120px">
+                    <img routerLink="/timeWait/homePage" src="http://oz1y7s5ij.bkt.clouddn.com/images/common/logo.png"/>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="" routerLink="/timeWait/homePage" routerLinkActive="active" (click)="toggleShow()">欢迎</a>
+                    </li>
+                    <li>
+                        <a href="" routerLink="/timeWait/square" routerLinkActive="active" (click)="toggleShow()">广场</a>
+                    </li>
+                    <li>
+                        <a href="" routerLink="/timeWait/help" routerLinkActive="active" (click)="toggleShow()">帮助</a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="站内搜索" [(ngModel)]="searchParam" name="searchParam" (keyup.enter)="search()">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" (click)="search()">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="float:right;" class="hideBtn" (click)="hideNavBar()">
+                    <a style="padding-top:0px;" data-field="boring">
+                        <span *ngIf="!navIsHide" class="glyphicon glyphicon-chevron-up" style="top:10px;" data-field="boring"></span>
+                        <span *ngIf="navIsHide" class="glyphicon glyphicon-chevron-down" style="top:10px;" data-field="boring"></span>
+                    </a>
+                </li>
+                <li id="navbar-LoginBtn" data-toggle="modal" data-target=".loginModal" *ngIf="!currentLoggedInUser?.userName">
+                    <a>欢迎你，请登录</a>
+                </li>
+                <li class="loginMenu dropdown" *ngIf="currentLoggedInUser?.userName">
+                    <img [routerLink]="['/timeWait/userSpace']" 
+                        alt="140x140" class="loginMenuimg img-circle" [src]="avatarCDN">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" [title]="'你的用户名叫'+currentLoggedInUser.userName">
+                        {{currentLoggedInUser.userName}}
+                        <strong class="caret"></strong>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="" [routerLink]="['/timeWait/userSpace']">地盘</a>
+                        </li>
+                        <li>
+                            <a href="" [routerLink]="['/blog/default',currentLoggedInUser.userID]">博客</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a (click)="logout()">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- <loginModalAPP></loginModalAPP> -->

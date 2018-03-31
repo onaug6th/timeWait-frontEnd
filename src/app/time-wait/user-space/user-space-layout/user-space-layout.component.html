@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs navli">
+        <li class="active" (click)="changeStep(1)"><a data-toggle="tab" aria-expanded="true">主页</a></li>
+        <li (click)="changeStep(2)"><a data-toggle="tab" aria-expanded="false">应用</a></li>
+        <li (click)="changeStep(3)"><a data-toggle="tab" aria-expanded="false">我的消息</a></li>
+</ul>
+<div *ngIf="step == 1">
+    <user-space-default></user-space-default>
+</div>
+<div *ngIf="step == 2">
+    <user-space-application></user-space-application>
+</div>

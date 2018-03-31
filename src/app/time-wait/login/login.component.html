@@ -1,0 +1,49 @@
+<div class="loginWarp col-sm-12">
+    <div class="loginBody col-sm-9 col-lg-offset-2">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="hero-unit">
+                    <h1>
+                        登陆时耽
+                    </h1>
+                    <p>
+                        denglu shidan
+                    </p>
+                    <span style="font-size:12px" class="label label-primary">你还记得账号密码吗</span>
+                </div>
+            </div>
+            <div class="body-Right col-md-5">
+                <form [formGroup]="userForm" (ngSubmit)="login()" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input [ngClass]="{'has-error': formErrors.userName,'valid-success': userForm.value.userName && !formErrors.userName}" class="form-control" 
+                                    type="text" placeholder="昵称或邮箱（比如：王石开）" formControlName="userName" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.userName" class="text-danger" style="font-size:12px">
+                                {{ formErrors.userName }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <input [ngClass]="{'has-error': formErrors.passWord,'valid-success': userForm.value.passWord && !formErrors.passWord}" class="form-control" 
+                                    type="password" placeholder="密码（比如：王石开）" formControlName="passWord" required>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="padding-right:0px;">
+                            <p *ngIf="formErrors.passWord" class="text-danger" style="font-size:12px">
+                                {{ formErrors.passWord }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="loginBtn btn btn-success col-lg-6">登陆</button>
+                    </div>
+                    <p style="font-size:12px">
+                        点击“登陆”，即表示您又同意了我们的 服务条款 和 隐私政策。我们不会向您发送帐户相关的电子邮件。因为我们很懒
+                    </p><small>——<cite>沃兹基硕德</cite></small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

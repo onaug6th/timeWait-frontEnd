@@ -1,0 +1,137 @@
+<p class="alert Topalert">成就管理<br />
+    <font size="1">啊啊啊啊</font>
+</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption" style="color:#32c5d2;">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span> 成就管理 </span>
+                </div>
+            </div>
+            <div>
+                <div class="tool-bar">
+                    <button class="btn btn-success" (click)="openNewAchievementModal()">新增成就</button>
+                    <li class="btn btn-primary" style="background:black;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">删除大礼包<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li><a (click)="deleteCommonMethod('delete')">删除成就</a></li> -->
+                        </ul>
+                    </li>
+                </div>
+                <div class="search-bar clearfix">
+                    <div class="col-sm-12">
+                        <label for="achievementName" class="col-sm-1">成就名称</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="achievementName" id="achievementName" [(ngModel)]="searchData.achievementName">
+                        </div>
+                        <label for="achievementType" class="col-sm-1">成就分类</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="achievementType" id="achievementType" [(ngModel)]="searchData.achievementType">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-right" style="margin-top:5px;">
+                        <button class="btn btn-primary" (click)="search()">查询</button>
+                        <button class="btn btn-primary" (click)="emptySearch()">清空</button>
+                    </div>
+                </div>
+                <table class="user-manager-table table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="checkAll" [(ngModel)]="isCheckedAll" (ngModelChange)="checkedAll()">
+                        </th>
+                        <th>成就id</th>
+                        <th>成就分类</th>
+                        <th>成就名称</th>
+                        <th>成就级别</th>
+                        <th>成就说明</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr *ngFor="let item of userDataList">
+                        <td>
+                            <input type="checkbox" name="item._id" [(ngModel)]="item.isChecked" (ngModelChange)="checked(item)">
+                        </td>
+                        <td>
+                            <!-- 成就id -->
+                            {{item._id}}
+                        </td>
+                        <td>
+                            <!-- 成就分类 -->
+                            {{item.achievementType}}
+                        </td>
+                        <td>
+                            <!-- 成就名称 -->
+                            {{item.achievementName}}
+                        </td>
+                        <td>
+                            <!-- 成就级别 -->
+                            {{item.achievementLevel}}
+                        </td>
+                        <td>
+                            <!-- 成就说明 -->
+                            {{item.achievementIntro}}
+                        </td>
+                        <td>
+                            <!-- 操作 -->
+                            <button class="btn" (click)="openUserDetailModal($event,item)">查看详情</button>
+                        </td>
+                    </tr>
+                </table>
+                <!--底部分页按钮-->
+                <app-pagination
+                    [currentPageNum]="pageInfo.currentPageNum"
+                    [pagesShow]="pageInfo.pagesShow"
+                    [totalPages]="pageInfo.totalPages"
+                    (pageChanged)="pageNavigation($event)">
+                    </app-pagination>
+                <!--底部分页按钮-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 新增用户Modal -->
+<div id="new-achievement" class="new-user modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" (click)="closeNewAchievementModal()">&times;</button>
+                <h4 class="text-center">新加用户</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="new_achievementName" class="col-sm-2">成就名称</label>
+                        <div class="col-sm-4">
+                            <input id="new_achievementName" class="form-control" name="new_achievementName" [(ngModel)]="newAchievementModalData.achievementName">
+                        </div>
+                        <label for="new_achievementType" class="col-sm-2">成就分类</label>
+                        <div class="col-sm-4">
+                            <!-- <select id="new_achievementType" class="form-control" name="new_achievementType" [(ngModel)]="newAchievementModalData.achievementType">
+                                <option value=""></option>
+                            </select> -->
+                            <input id="new_achievementType" class="form-control" name="new_achievementType" [(ngModel)]="newAchievementModalData.achievementType">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="new_achievementLevel" class="col-sm-2">成就等级</label>
+                        <div class="col-sm-4">
+                            <input id="new_achievementLevel" class="form-control" name="new_achievementLevel" [(ngModel)]="newAchievementModalData.achievementLevel">
+                        </div>
+                        <label for="new_achievementIntro" class="col-sm-2">成就说明</label>
+                        <div class="col-sm-4">
+                            <input id="new_achievementIntro" class="form-control" name="new_achievementIntro" [(ngModel)]="newAchievementModalData.achievementIntro">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="newUser()">新增</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增用户Modal -->

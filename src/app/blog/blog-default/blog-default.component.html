@@ -1,0 +1,50 @@
+<div class="container"  [style.min-height.px]="windowHeight" [@simAnim]="'zoomIn'">
+    <!-- <div class="article">
+        <div *ngFor="let item of articleList">
+            <article-box [articleID]="item._id" [title]="item.title" [size]="item.size" [intro]="item.intro" [type]="item.type"></article-box>
+        </div>
+    </div> -->
+    <div class="clearfix" style="padding-top:20px;">
+        <div>
+            <h4 class="text-center" *ngIf="articleList.length == 0">还没有发布过文章</h4>
+            <div class="col-sm-12 article-box clearfix" *ngFor="let item of articleList">
+                <div class="col-xs-12 col-sm-12" style="padding: 15px 15px 0px 25px;background:white">
+                    <span class="article-type">#{{item.type}}</span>
+                    <div>
+                        <h3 style="color: #555;font-weight:bold" [title]="item.title">{{item.title}}</h3>
+                    </div>
+                    <div style="margin-top: 25px;">
+                        <h5 style="overflow: hidden;max-height: 14px;" [title]="item.intro">{{item.intro}}</h5>
+                    </div>
+                    <hr>
+                    <p style="color:#8492A6">{{item.date}}<button class="btn btn-default pull-right"
+                        [routerLink]="['/blog/articleDetail',item._id]">Read Detail</button></p>
+                    <p style="color:#8492A6;font-size: 13px;">阅读 {{item.read}}  赞 {{item.like.length}}</p>
+                </div>
+            </div>
+            <!--底部分页按钮-->
+            <app-pagination
+                [pageClassConfig]="pageClass"
+                [currentPageNum]="pageInfo.currentPageNum"
+                [pagesShow]="pageInfo.pagesShow"
+                [totalPages]="pageInfo.totalPages"
+                [prevPageText]="pageInfo.prevPageText"
+                [nextPageText]="pageInfo.nextPageText"
+                (pageChanged)="pageNavigation($event)">
+            </app-pagination>
+            <!--底部分页按钮-->
+        </div>
+        <!-- <div class="col-sm-3 col-xs-12">
+            <div>
+                <ul class="nav custom" style="padding:0px;">
+                    <div style="background:#f9fafc;">
+                        <a>日志分类</a>
+                    </div>
+                    <li (click)="togglePostType(item)" [ngClass]="{'forum-type-box-active':nowBlogType == item}"  *ngFor="let item of typeList">
+                        <a>{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+</div>

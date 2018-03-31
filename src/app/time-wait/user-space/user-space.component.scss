@@ -1,0 +1,21 @@
+.spaceleft{						/*空间左，就是头像与修改个人资料*/
+	height:auto;
+}
+.spaceleft .Avatar{				/*空间左的头像 Div*/
+	margin: 10px 0 0 0;text-align: center;padding-bottom: 20px;
+}
+.spaceleft .Avatar img{
+	width:100%;
+	cursor: pointer;
+}
+.spaceleft .name{				/*空间左的名字 Div*/
+	padding:0px 0px 10px 0px;
+    clear: both;
+	border-bottom: 1px solid #ccc;
+}
+.spaceleft .name label{			/*空间左的名字 label*/
+	font-size: 20px;font-style: normal;font-weight: 300;line-height: 24px;color: #666;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
+}
+.spaceleft .name .editprofile{	/*空间左的编辑个人资料按钮*/
+	
+}

@@ -1,0 +1,82 @@
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.row{
+    margin: 0px;
+}
+
+li{
+    list-style: none;
+}
+.forum-operate{
+	font-family: "微软雅黑";
+    height: 70px;
+    margin-bottom: 25px;
+}
+.forum-operate .arrow-left{
+    margin-top: 19px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #fafafa;
+    float: left;
+}
+.forum-operate .kind{
+    border: 1px solid #f0f0f0;
+    background: #fafafa;
+    border-radius: 5px;
+}
+.forum-operate .kind ul{
+	height:100%;
+}
+.forum-operate .kind a{
+	font-size: 14px;
+	margin: 0px 0px 0px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition:all 0.5s;
+}
+.forum-operate .kind a:hover{
+	background: #0F9AE0;
+	color:white;
+	transition:transform 5s; 
+}
+.forum-operate .kind span{
+    font-size: 14px;
+}
+.forum-type-box{
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    // height:115px;
+}
+.forum-type-box .glyphicon{
+    font-size: 24px;
+    margin:15px 0px 10px 0px;
+}
+.forum-type-box .forum-type-box-intro{
+    display: block;
+}
+.forum-type-box:hover{
+    background: #60afea;
+    color:white;
+    transition: 0.3s;
+}
+
+.forum-type-box-active{
+    background: #60afea;
+    color:white;
+}
+
+.forum-post{
+    transition: all 1s;
+}
+.forum-post:hover{
+    transform:scale(1.02,1.02) ;
+}
+
+.forum-post p{
+    color:#8492A6
+}

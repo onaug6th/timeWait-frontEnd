@@ -1,0 +1,98 @@
+/*页面顶部导航栏样式文件*/
+.topnavbar{
+    z-index:10;
+    background: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,.08);
+}
+.topnavbar a{
+	cursor: pointer;
+}
+.topnavbar .navbar-header{
+    margin-left: 10%;
+    height: 50px;
+}
+.topnavbar .navbar-header img{
+	cursor: pointer;
+    width:90px;
+    margin-top:5px;
+	transition:transform 5s,width 2s,border-radius 5s;
+    position: absolute; 
+    
+}
+.topnavbar .navbar-header img:hover{
+	animation: iconRotate 2s;
+}
+a.active{
+    color: #2d8cf0 !important;
+    border-bottom: 2px solid #2d8cf0;
+}
+/*icon ratote animate*/
+@keyframes iconRotate
+{
+    0% {transform: rotate(0deg);}
+    40%  {transform: rotate(220deg);}
+    60%  {transform: rotate(-220deg);}
+    100% {transform: rotate(0deg);}
+}
+.topnavbar .navbar-right{
+    margin-right: 14%;
+    position: absolute;
+    right: 0px;
+    top:0px;
+}
+.topnavbar .navbar-right .hideBtn{
+    position: absolute;
+    top: 40px;
+    right: -25%;
+    border-radius: 0px 0px 20px 20px;
+    background: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,.08);
+}
+.topnavbar .navbar-right > li{
+	float: left;
+}
+.topnavbar .navbar-right .loginMenu{
+	padding: 0px 10px 0px 10px;
+}
+.topnavbar .loginMenu > a{
+	float: left;
+}
+.topnavbar .loginMenu .loginMenuimg{
+    float: left;width:40px;margin-top: 5px;cursor: pointer;
+}
+.loginMenu > a{
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.caret{
+    position: absolute;
+    top: 23px;
+    right: 4px;
+}
+@media screen and (min-width:1200px) , (min-width:1107px){
+    .navbar-form{
+        margin-right: 25%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+}
+@media screen and (max-width:1107px){
+    .topnavbar .loginMenu .loginMenuimg{
+        margin-top:0px;
+    }
+    .caret{
+        top:20px;
+    }
+}
+@media screen and (max-width:450px){
+    .loginMenu > a{
+        margin-right:15px; 
+    }
+}
+@media screen and (max-width:1200px) {
+	.loginMenu .dropdown-menu{
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    }
+}

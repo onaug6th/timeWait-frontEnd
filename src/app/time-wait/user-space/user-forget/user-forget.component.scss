@@ -1,0 +1,64 @@
+.banner h1{
+    text-align: center;
+    font-size: 2.5em;
+    padding-top: 34px;
+    color:#555;
+}
+
+.center{
+    margin-top:20px;
+}
+
+.method-box{
+    cursor: pointer;
+    padding: 3em 5% 3em;
+}
+
+.method-box:hover{
+    // transform:scale(1.05,1.05) ;
+    background: #60afea;
+    color:white;
+    transition: 0.3s;
+}
+.method-box:hover .icon .glyphicon{
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.method-box:hover p{
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.method-box:hover font{
+    color: #FFF;
+    transition: 0.3s;
+}
+
+.method-box .icon .glyphicon{
+    color:#717171;
+    font-size: 85px;
+    line-height: 122px;
+}
+
+.method-box p{
+    font-size: 2em;
+    color: #4C4E4D;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.method-box font{
+    color: #99979A;
+}
+
+.operate-box{
+    padding-top: 34px;
+}
+
+.tip{
+    font-size: 2em;
+    color: #4C4E4D;
+    text-align: center;
+    margin-bottom: 1em;
+}

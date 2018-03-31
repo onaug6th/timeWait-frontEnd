@@ -1,0 +1,121 @@
+.smallzhuhand{
+	text-align: center;
+	z-index: 3;
+	max-width:45px;
+	position: fixed;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px 0px 0px 5px;
+	top: 40%;
+	right: 0;
+}
+.smallzhuhand ul{
+	padding: 10px 0px 0px 0px;
+}
+.smallzhuhand li{
+	margin-bottom: 10px;
+	display: block;
+	list-style-type:none
+}
+.smallzhuhand .glyphicon-question-sign{
+	width: 100%;
+	transition: transform 1s;
+}
+.smallzhuhand .glyphicon-question-sign:hover{
+	transform: rotate(360deg);
+}
+.smallzhuhand .glyphicon-chevron-up{
+	width: 100%;
+	position:relative;
+	z-index: 1;
+	transition: top 1s;
+}
+.smallzhuhand .glyphicon-chevron-up:hover{
+	top:-900px;
+}
+.smallzhuhand i{
+	width: 100%;
+}
+.smallzhuhand a{
+	cursor: pointer;
+	text-decoration:none
+}
+
+.smallzhuhand-dialog{
+    width: 0px;
+    background: #ccc;
+    width: 400px;
+	text-align: center;
+	z-index: 2;
+	position: fixed;
+	background: #fff;
+    border-radius: 5px 5px 5px 5px;
+    right: -400px;
+    top: 40%;
+    box-shadow: -4px 0 4px rgba(7,17,27,.1),
+				 4px 0 4px rgba(7,17,27,.1),
+				 0 -4px 4px rgba(7,17,27,.1),
+				 0 4px 4px rgba(7,17,27,.1);
+}
+.smallzhuhand-dialog .dialog-header{
+	padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.smallzhuhand-dialog .dialog-body{
+	padding: 15px;
+    height: 185px;
+    background: #F8F8F8;
+    overflow: auto;
+}
+.smallzhuhand-dialog .dialog-body .userMessageBox{
+    max-width: 250px;
+    word-wrap: break-word;
+    float: right;
+    position: relative;
+    margin-top: 0;
+    margin-left: 20%;
+    margin-right: 0;
+    color: #FFF;
+    background-color: #34BBF9;
+    border-radius: 4px;
+    border: 1px solid #34BBF9;
+    padding: 8px 10px 7px 10px;
+}
+.smallzhuhand-dialog .dialog-body .arrow-right{
+    margin-top: 13px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #34BBF9;
+    float: right;
+}
+.smallzhuhand-dialog .dialog-body .returnMessageBox{
+    max-width: 300px;
+    float: left;
+    text-align: left;
+    position: relative;
+    margin-top: 0;
+    margin-left: 0%;
+    margin-right: 0;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    border: #ccc 1px solid;
+    padding: 8px 10px 7px 10px;
+}
+.smallzhuhand-dialog .dialog-body .arrow-left{
+    margin-top: 13px;
+    width:0; 
+    height:0; 
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent; 
+    border-right:5px solid #ccc;
+    float: left; 
+}
+.smallzhuhand-dialog .dialog-footer{
+	padding-top: 10px;
+    height: 55px;
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0px 0px 5px 5px;
+}

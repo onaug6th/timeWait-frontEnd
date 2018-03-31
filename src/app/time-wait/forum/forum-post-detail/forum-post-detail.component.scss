@@ -1,0 +1,68 @@
+.row{
+    margin: 0px;
+}
+hr{
+    width: 95%;
+}
+
+@media screen and (min-width:1200px) , (min-width:992px){
+    .container{
+        width: 800px;
+    }
+}
+
+.post-detail > h2{
+    margin-bottom: 30px;
+}
+.post-detail .author-info .post-author{
+    font-size:16px;
+}
+.post-detail .author-info .post-date{
+    color:#8492A6;
+}
+.post-detail .post-value{
+    padding: 25px;
+}
+.post-detail .like-and-share{
+    padding:20px;
+}
+.post-detail .like-and-share .like-btn{
+    padding:3px 35px;
+    border-radius: 35px;
+}
+
+
+.intro-detail-warp{
+    height:0px;
+    width:0px;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+.intro-detail-warp .intro-detail{
+    background: white;
+    display: none;
+    padding: 2px;
+    border-radius: 5px;
+    width: 83%; 
+    height: 80%; 
+    float: right; 
+    margin-top: 15%;
+    box-shadow: -4px 0 4px rgba(7,17,27,.1), 4px 0 4px rgba(7,17,27,.1), 0 -4px 4px rgba(7,17,27,.1), 0 4px 4px rgba(7,17,27,.1);
+}
+.intro-detail .detail-background{
+    height: 40%;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    background-size: cover !important; 
+    background-position: center !important;
+}
+.intro-detail .detail-content{
+    height: 37%;
+    padding: 5px;
+}
+.intro-detail .detail-operate{
+    height: 10%;
+    padding: 5px;
+}

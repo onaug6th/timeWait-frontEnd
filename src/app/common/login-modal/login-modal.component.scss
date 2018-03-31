@@ -1,0 +1,34 @@
+/*登陆框样式*/
+.loginModal{
+	
+}
+.loginModal .modal-body label{
+	width:100%;text-indent: 15px;
+}
+.loginModal .modal-body a{
+	float: right;margin-right: 12px;font-size: 12px;
+}
+/*
+ * css3动画用法
+ * hover加触摸后的动作
+ * 未改变前添加时间
+ */
+.loginModal .close{
+	transition:transform 1s;
+	-moz-transition: -moz-transform 1s; /* Firefox 4 */
+	-webkit-transition: -webkit-transform 1s; /* Safari and Chrome */
+	-o-transition: -o-transform 1s; /* Opera */
+}
+.loginModal .close:hover{
+	transform:rotate(120deg);
+	-moz-transition:rotate(120deg); /* Firefox 4 */
+	-webkit-transform: rotate(120deg); /* Safari and Chrome */
+	-o-transition:rotate(120deg); /* Opera */
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+.has-error  {
+  border-left: 5px solid #a94442; /* red */
+}

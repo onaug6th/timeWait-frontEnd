@@ -1,0 +1,137 @@
+/*主页css样式*/
+.col-center-block{
+    float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;  
+}
+.mainbody {						/*页面不留白*/
+	padding: 0px;
+}
+
+.home {							/*顶部蓝色地球宣传*/
+	background: #0083cb;
+	height: 610px;
+}
+
+.home-bg {						/*顶部蓝色地球背景*/
+    background: #0083cb;
+	height: 610px;
+	/*background-size: 100% 100%;*/
+}
+
+.home h1 {						/*买或卖那段话*/
+	font-size: 72px;
+	font-weight: 900;
+	color: white;
+	margin: 15px 0;
+}
+
+.home .cont-area h2 {			/*买或卖那段话*/
+	letter-spacing: 10px;
+	color: white;
+}
+
+.home .cont-area {					/*文字与大按钮*/
+	margin-top:17em;
+	text-align: center;
+}
+
+.home .cont-area .btn-looklook{
+	margin-right: 25px;
+	width: 160px;
+	background: #014983;
+	color: white;
+	transition:transform 1s;
+	-moz-transition: -moz-transform 1s; /* Firefox 4 */
+	-webkit-transition: -webkit-transform 1s; /* Safari and Chrome */
+	-o-transition: -o-transform 1s; /* Opera */
+}
+.home .cont-area .btn-looklook:hover{
+	color:white;
+	transform:scale(1.05,1.05) ;
+	-moz-transition:scale(1.05,1.05); /* Firefox 4 */
+	-webkit-transform: scale(1.05,1.05); /* Safari and Chrome */
+	-o-transition:scale(1.05,1.05); /* Opera */
+}
+.home .cont-area .btn-register {
+	width: 160px;
+	background: white;
+	color: #014983;
+	transition:transform 1s;
+	-moz-transition: -moz-transform 1s; /* Firefox 4 */
+	-webkit-transition: -webkit-transform 1s; /* Safari and Chrome */
+	-o-transition: -o-transform 1s; /* Opera */
+}
+.home .cont-area .btn-register:hover{
+	transform:scale(1.05,1.05) ;
+	-moz-transition:scale(1.05,1.05); /* Firefox 4 */
+	-webkit-transform: scale(1.05,1.05); /* Safari and Chrome */
+	-o-transition:scale(1.05,1.05); /* Opera */
+}
+@media screen and (max-width: 404px) {
+	.btn-looklook {
+		margin: 0px !important;
+	}
+}
+@media screen and (max-width:354px) {
+	.btn-register {
+		margin-top: 10px;
+	}
+}
+.features-area {				/*介绍区域外壳*/
+	min-height: 500px;
+	text-align: center;
+	padding: 45px 0px 0px 0px;
+}
+
+.features-area .area-h1 {
+	letter-spacing: 8px;
+}
+
+.features-area .area-h4 {
+	margin-top: 40px;
+	color: #7b8084;
+	letter-spacing: 8px;
+}
+
+.cutHand {						/*剁手区域*/
+	
+}
+
+.cutHand .leftHand {
+	left: 0;
+	position: absolute;
+}
+
+.cutHand .rightHand {
+	right: 0;
+	position: absolute;
+}
+
+.team {
+	background: #fbfbfb;
+}
+
+.team img {
+	margin-top: 50px;
+	margin-right: 30px;
+	width: 170px;
+	height: 170px;
+	border: 1px solid #ccc;
+}
+
+.Gfat img {
+	width: 160px;
+	height: 160px;
+}
+
+.GfatSay {
+	color: #7b8084;
+	font-family: "微软雅黑";
+	-moz-column-count: 2;
+	/* Firefox */
+	-webkit-column-count: 2;
+	/* Safari and Chrome */
+	column-count: 2;
+}

@@ -1,0 +1,151 @@
+.blogTopNav{
+    width:100%;
+    position:fixed;
+    padding:0px;
+    top:0px;
+    z-index:3;
+    transition: all .3s;
+}
+.scroll{
+    background: hsla(0,0%,100%,.86);
+    box-shadow: 0 0 25px #ccc;
+    color: #999;
+}
+.scroll a{
+    color: #555 !important;
+}
+.blogTopNav-content .menuNav{
+    font-weight: 100;
+    float:left;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    display: block;
+}
+.blogTopNav-content .menuNav li{
+    display: block;
+    padding:20px 20px 20px 0px;
+    float:left;
+}
+.blogTopNav-content .menuNav a{
+    padding:15px;
+    line-height:20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition:all;
+}
+.blogTopNav-content .menuNav a:hover{
+    color:#0083cb;
+}
+.blogTopNav-right .blogTopNav-avatar{
+    width: 50px;
+    margin-top: 7px;
+}
+.blogTopNav-right .avatar-intro{
+    
+}
+@media screen and (max-width:600px) {
+	#background {
+        height: 16em !important;
+    }
+    #background .intro{
+        top:7em !important;
+    }
+}
+#background {
+    height: 24em;
+    background-size: cover !important;
+    background-position: center !important;
+}
+#background .intro{
+    position: absolute; z-index: 2; color: white; top: 10em; bottom: 0; left: 0; right: 0;
+}
+#background::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    z-index: 1;
+}
+
+.blog-menu{
+    top:4em;
+    position: fixed;
+    z-index: 4;
+    color: #337ab7;
+    border-radius: 5px;
+    transition:all 2s;
+}
+
+.blog-menu > span{
+    color: #ccc;
+    cursor: pointer;
+}
+
+/*
+ * 小购物车组件样式文件
+ */
+ .side-menu{						/*购物车界面*/
+	display: none;
+	z-index:20;
+	position:absolute;
+}
+.sidebar-main{						/*购物车大体内容*/
+	position:fixed;
+	z-index:1041;
+	top:0;
+	width:300px;
+	left:0px;
+	height:100%;
+	background: #FFFFFF;
+    box-shadow: -4px 0 4px rgba(7, 17, 27, 0.1), 4px 0 4px rgba(7, 17, 27, 0.1), 0 -4px 4px rgba(7, 17, 27, 0.1), 0 4px 4px rgba(7, 17, 27, 0.1);
+}
+.sidebar-main .sidebar-header{
+    background-size: cover !important;
+    background-position: center !important;
+}
+.sidebar-main .top-bar{
+    height: 25px;;
+}
+.sidebar-main .sidebar-image img{
+    width: 50px;
+    margin: 16px;
+}
+.sidebar-main .sidebar-brand{
+    display: block;
+    width: 100%;
+    color:white;
+    text-decoration: none;
+    padding: 10px 10px 0px 10px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-main .sidebar-nav li a{
+    position: relative;
+    cursor: pointer;
+    color: #555;
+    user-select: none;
+    display: block;
+    padding: 15px;
+    transition: all .2s ease-in-out;
+}
+
+.sidebar-main li.dropdown ul{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.sidebar-main li.divider{
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}

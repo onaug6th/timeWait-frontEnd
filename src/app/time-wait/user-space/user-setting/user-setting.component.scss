@@ -1,0 +1,62 @@
+.profileleft{
+	height:auto;
+}
+.profileleft .Avatar{				/*空间左的头像 Div*/
+	height:175px;margin: 10px 0 0 0;
+}
+.profileleft .Avatar img{
+	width:125px;
+	cursor: pointer;
+}
+.profileleft .Avatar label{
+	color: #666;
+    text-indent: 10px;
+    font-size: 16px;
+}
+.profileleft ul > li {
+    position: relative;
+    display: block;
+    background: white;
+    border-bottom: 1px solid #e1e4e8;
+    cursor: pointer;
+}
+.profileleft ul > li > a{
+    color:black;
+}
+.profileleft ul > .active{
+    color:white;
+    background-color: #f0f0f0;
+}
+.profileleft ul > .active a{
+    color:#586069
+}
+.profileleft .nav span{
+	margin-right: 10px;
+}
+.profileright{
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px 0px 0px 20px;
+    padding-bottom: 10px;
+}
+.profileright .filehead{
+    border-bottom: 1px #e1e4e8 solid;
+}
+.profileright form label{
+    line-height: 35px;
+}
+.profileright .randomName{
+    position: absolute;
+    right: 145px;
+    top: 100px;
+    z-index: 2;
+}
+
+.valid-success  {
+    border-left: 5px solid #42A948; /* green */
+}
+.has-error  {
+    border-left: 5px solid #a94442; /* red */
+}

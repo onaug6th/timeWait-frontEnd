@@ -1,0 +1,13 @@
+@media screen and (min-width:1200px) , (min-width:992px){
+    .container{
+        width: 960px;
+    }
+}
+@media screen and (max-width:600px) {
+	.container {
+		padding: 0px;
+	}
+}
+.row{
+    margin:0px;
+}

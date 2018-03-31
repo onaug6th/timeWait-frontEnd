@@ -1,0 +1,21 @@
+<div class="row" style="margin:20px 0px 0px 0px;">
+    <li class="function-box col-sm-2 col-xs-6" (click)="toggleFunction(1)"
+        [ngClass]="{'function-box-active': nowFunction == 1}">
+        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+        <span class="function-box-intro">战利品</span>
+    </li>
+    <li class="function-box col-sm-2 col-xs-6" (click)="toggleFunction(2)"
+        [ngClass]="{'function-box-active': nowFunction == 2}">
+        <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+        <span class="function-box-intro">成就</span>
+    </li>
+</div>
+<div class="row function-content" *ngIf="nowFunction == 1">
+    <h4 class="text-center">当前还没开放战利品功能</h4>
+</div>
+<div class="row function-content" *ngIf="nowFunction == 2">
+    <div *ngFor="let item of achievementList" class="alert alert-success" role="alert">
+        <strong>成就名称：</strong>{{item.achievementName}} <strong>成就介绍：</strong>{{item.achievementIntro}} 
+        <strong>成就等级：</strong>{{achievementLevelTranslate[item.achievementLevel]}} <strong>成就类型：</strong>{{achievementTypeTranslate[item.achievementType]}}
+    </div>
+</div>

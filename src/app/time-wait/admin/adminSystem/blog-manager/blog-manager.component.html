@@ -1,0 +1,370 @@
+<p class="alert Topalert">博客管理操作栏目<br />
+    <font size="1">目栏作操里管客博</font>
+</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption" style="color:#32c5d2;">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span> 文章管理 </span>
+                </div>
+            </div>
+            <div>
+                <div class="tool-bar">
+                    <li class="btn btn-primary" style="background:black;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">删除大礼包<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a (click)="deleteCommonMethod('delete')">删除文章</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="search-bar clearfix">
+                    <div class="col-sm-12">
+                        <label for="title" class="col-sm-1">文章名称</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="title" id="title" [(ngModel)]="searchData.title">
+                        </div>
+                        <label for="userName" class="col-sm-1">作者名称</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="userName" id="userName" [(ngModel)]="searchData.userName">
+                        </div>
+                        <label for="userID" class="col-sm-1">作者ID</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="userID" id="userID" [(ngModel)]="searchData.userID">
+                        </div>
+                        <label for="date" class="col-sm-1">发布时间</label>
+                        <div class="col-sm-2">
+                            <input id="date" class="form-control daterangepicker-plugin" 
+                            name="date" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-right" style="margin-top:5px;">
+                        <button class="btn btn-primary" (click)="search()">查询</button>
+                        <button class="btn btn-primary" (click)="emptySearch()">清空</button>
+                    </div>
+                </div>
+                <table class="article-manager-table table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="checkAll" [(ngModel)]="isCheckedAll" (ngModelChange)="checkedAll()">
+                        </th>
+                        <th>文章ID</th>
+                        <th>文章名称</th>
+                        <th>作者ID</th>
+                        <th>作者名称</th>
+                        <th>文章分类</th>
+                        <th>发布时间</th>
+                        <th>是否显示</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr *ngFor="let item of articleDataList">
+                        <td>
+                            <input type="checkbox" name="item._id" [(ngModel)]="item.isChecked" (ngModelChange)="checked(item)">
+                        </td>
+                        <td>
+                            <!-- 文章ID -->
+                            {{item._id}}
+                        </td>
+                        <td>
+                            <!-- 文章名称 -->
+                            {{item.title}}
+                        </td>
+                        <td>
+                            <!-- 作者ID -->
+                            {{item.userID}}
+                        </td>
+                        <td>
+                            <!-- 作者名称 -->
+                            {{item.userName}}
+                        </td>
+                        <td>
+                            <!-- 文章分类 -->
+                            {{item.type}}
+                        </td>
+                        <td>
+                            <!-- 发布时间 -->
+                            {{item.date}}
+                        </td>
+                        <td>
+                            <!-- 是否显示 -->
+                            {{item.sort == '0' ? '否' : '是'}}
+                        </td>
+                        <td>
+                            <!-- 操作 -->
+                            <button class="btn" (click)="openModal($event,item)">查看详情</button>
+                        </td>
+                    </tr>
+                </table>
+                <!--底部分页按钮-->
+                <app-pagination
+                    [currentPageNum]="pageInfo.currentPageNum"
+                    [pagesShow]="pageInfo.pagesShow"
+                    [totalPages]="pageInfo.totalPages"
+                    (pageChanged)="pageNavigation($event)">
+                    </app-pagination>
+                <!--底部分页按钮-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption" style="color:#32c5d2;">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span> 文章回复管理 </span>
+                </div>
+            </div>
+            <div>
+                <div class="tool-bar">
+                    <li class="btn btn-primary" style="background:black;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">删除大礼包<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a (click)="commentDeleteCommonMethod('delete')">删除文章回复</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="search-bar clearfix">
+                    <div class="col-sm-12">
+                        <label for="commentTitle" class="col-sm-2">回复文章标题</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="commentTitle" id="commentTitle" [(ngModel)]="commentSearchData.title">
+                        </div>
+                        <label for="commentUserName" class="col-sm-2">回复人名称</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" type="text" name="commentUserName" id="commentUserName" [(ngModel)]="commentSearchData.userName">
+                        </div>
+                        <label for="commentDate" class="col-sm-2">回复人时间</label>
+                        <div class="col-sm-2">
+                            <input id="commentDate" class="form-control daterangepicker-plugin" 
+                            name="commentDate" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-right" style="margin-top:5px;">
+                        <button class="btn btn-primary" (click)="commentSearch()">查询</button>
+                        <button class="btn btn-primary" (click)="emptyCommentSearch()">清空</button>
+                    </div>
+                </div>
+                <table class="comment-manager-table table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="checkAll" [(ngModel)]="commentIsCheckedAll" (ngModelChange)="commentCheckedAll()">
+                        </th>
+                        <th>文章回复那条ID</th>
+                        <th>回复文章的标题</th>
+                        <th>回复人名称</th>
+                        <th>回复内容</th>
+                        <th>回复时间</th>
+                        <th>是否显示</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr *ngFor="let item of commentDataList">
+                        <td>
+                            <input type="checkbox" name="item._id" [(ngModel)]="item.isChecked" (ngModelChange)="commentChecked(item)">
+                        </td>
+                        <td>
+                            <!-- 文章回复id -->
+                            {{item._id}}
+                        </td>
+                        <td>
+                            <!-- 回复文章标题 -->
+                            {{item.commentArticleTitle}}
+                        </td>
+                        <td>
+                            <!-- 作者名称 -->
+                            {{item.commentUserName}}
+                        </td>
+                        <td>
+                            <!-- 回复内容 -->
+                            {{item.commentValue}}
+                        </td>
+                        <td>
+                            <!-- 回复时间 -->
+                            {{item.commentDate}}
+                        </td>
+                        <td>
+                            <!-- 是否显示 -->
+                            {{item.sort == '0' ? '否' : '是'}}
+                        </td>
+                        <td>
+                            <!-- 操作 -->
+                            <button class="btn" (click)="commentOpenModal($event,item)">查看详情</button>
+                        </td>
+                    </tr>
+                </table>
+                <!--底部分页按钮-->
+                <app-pagination
+                    [currentPageNum]="commentPageInfo.currentPageNum"
+                    [pagesShow]="commentPageInfo.pagesShow"
+                    [totalPages]="commentPageInfo.totalPages"
+                    (pageChanged)="commentPageNavigation($event)">
+                    </app-pagination>
+                <!--底部分页按钮-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 文章详细内容Modal -->
+<div id="article-detail" class="article-detail modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center">文章详细资料</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="detail-title" class="col-sm-2">标题</label>
+                        <div class="col-sm-6">
+                            <input id="detail-title" type="text" class="form-control require-input" name="detail-title" [(ngModel)]="detailModalData.title" data-field="标题">
+                        </div>
+                        <label for="sort" class="col-sm-1">显示</label>
+                        <div class="col-sm-2">
+                            <select name="sort" id="sort" class="form-control require-input" data-field="显示" [(ngModel)]="detailModalData.sort">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="detail-userName" class="col-sm-2">作者</label>
+                        <div class="col-sm-4">
+                            <input id="detail-userName" type="text" class="form-control" name="detail-userName" [(ngModel)]="detailModalData.userName">
+                        </div>
+                        <label for="detail-userID" class="col-sm-1">作者ID</label>
+                        <div class="col-sm-4">
+                            <input id="detail-userID" type="text" class="form-control" name="detail-userID" [(ngModel)]="detailModalData.userID">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="intro" class="col-sm-2">简介</label>
+                        <div class="col-sm-4">
+                            <input id="intro" type="text" class="form-control" name="intro" [(ngModel)]="detailModalData.intro">
+                        </div>
+                        <label for="type" class="col-sm-1">分类</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input id="type" #typeInput type="text" name="type" class="form-control require-input" placeholder="如果想新增的话，直接填吧" [(ngModel)]="detailModalData.type" data-field="分类"/>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择现有分类 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li *ngFor="let item of typeList">
+                                            <a (click)="chooseType(item.name)">{{item.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="commentCount" class="col-sm-2">回复数量</label>
+                        <div class="col-sm-1">
+                            <input id="commentCount" type="text" class="form-control require-input" name="commentCount" [(ngModel)]="detailModalData.commentCount" data-field="回复数量">
+                        </div>
+                        <label for="read" class="col-sm-2">阅读数量</label>
+                        <div class="col-sm-1">
+                            <input id="read" type="text" class="form-control require-input" name="read" [(ngModel)]="detailModalData.read" data-field="阅读数量">
+                        </div>
+                        <label for="like" class="col-sm-1">点赞用户</label>
+                        <div class="col-sm-4">
+                            <input id="like" type="text" class="form-control" name="like" [(ngModel)]="detailModalData.like" data-field="点赞用户">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 text-right">正文</label>
+                        <div class="col-sm-9">
+                            <ckeditor name="value" [(ngModel)]="detailModalData.value" debounce="500" [config]="config"></ckeditor>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="updateArticle()">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 文章详细内容Modal -->
+
+<!-- 文章回复详细内容Modal -->
+<div id="article-comment-detail" class="article-comment-detail modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center">文章回复详细资料</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <form class="form-horizontal">
+                    <div class="form-group text-right">
+                        <label for="commentArticleTitle" class="col-sm-2">回复文章标题</label>
+                        <div class="col-sm-6">
+                            <input id="commentArticleTitle" type="text" class="form-control second-require-input" name="commentArticleTitle" 
+                                [(ngModel)]="commentDetailModalData.commentArticleTitle" data-field="回复文章标题">
+                        </div>
+                        <label for="detail-comment_sort" class="col-sm-1">显示</label>
+                        <div class="col-sm-2">
+                            <select name="detail-comment_sort" id="detail-comment_sort" class="form-control second-require-input" 
+                                [(ngModel)]="commentDetailModalData.sort" data-field="显示">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="detail-commentUserID" class="col-sm-2">回复人ID</label>
+                        <div class="col-sm-4">
+                            <input id="detail-commentUserID" type="text" class="form-control second-require-input" name="detail-commentUserID" 
+                                [(ngModel)]="commentDetailModalData.commentUserID" data-field="回复人ID">
+                        </div>
+                        <label for="detail-commentUserName" class="col-sm-1">回复人名称</label>
+                        <div class="col-sm-4">
+                            <input id="detail-commentUserName" type="text" class="form-control second-require-input" name="detail-commentUserName" 
+                                [(ngModel)]="commentDetailModalData.commentUserName"  data-field="回复人名称">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="detail-commentDate" class="col-sm-2">评论时间</label>
+                        <div class="col-sm-3">
+                            <input id="detail-commentDate" type="text" class="form-control second-require-input" name="detail-commentDate" 
+                                [(ngModel)]="commentDetailModalData.commentDate"  data-field="评论时间">
+                        </div>
+                        <label for="detail-floorNum" class="col-sm-1">楼层数</label>
+                        <div class="col-sm-1">
+                                <input id="detail-floorNum" type="text" class="form-control" name="detail-floorNum" 
+                                [(ngModel)]="commentDetailModalData.floorNum"  data-field="点赞数量">
+                        </div>
+                        <label for="detail-commentLike" class="col-sm-1">点赞数量</label>
+                        <div class="col-sm-1">
+                            <input id="detail-commentLike" type="text" class="form-control" name="detail-commentLike" 
+                                [(ngModel)]="commentDetailModalData.commentLike"  data-field="点赞数量">
+                        </div>
+                        <label for="detail-commentCount" class="col-sm-1">回复数量</label>
+                        <div class="col-sm-1">
+                            <input id="detail-commentCount" type="text" class="form-control second-require-input" name="detail-commentCount" 
+                                [(ngModel)]="commentDetailModalData.commentCount"  data-field="回复数量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="detail-commentValue" class="col-sm-2 text-right">正文</label>
+                        <div class="col-sm-9">
+                            <textarea id="detail-commentValue" type="text" class="form-control second-require-input" name="detail-commentValue" 
+                            [(ngModel)]="commentDetailModalData.commentValue"  data-field="正文" cols="30" rows="10">
+                                
+                            </textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="updateComment()">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 文章回复详细内容Modal -->

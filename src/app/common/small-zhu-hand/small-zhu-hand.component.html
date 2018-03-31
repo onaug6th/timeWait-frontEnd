@@ -1,0 +1,67 @@
+<div class="smallzhuhand">
+    <div class="smallzhuhand-dialog" style="display:none">
+        <div class="dialog-header">
+            <button class="close" (click)="toggleSmallZhuHand()">×</button>
+            <h5>有什么可以帮到你的吗?</h5>
+        </div>
+        <div #dialogbody class="dialog-body">
+            <div class="form-group clearfix" *ngFor="let item of messageList">
+                <div>
+                    <div [ngClass]="{'arrow-left':item.type == 'answer','arrow-right':item.type == 'ask'}"></div>
+                    <div [ngClass]="{'returnMessageBox':item.type == 'answer','userMessageBox':item.type == 'ask'}">
+                        {{item.message}}
+                        <div *ngIf="item.additional == 1">
+                            <strong><p>雷猴，请问你有什么疑问？</p></strong>
+                            <div class="form-group">
+                                <button class="randomName btn btn-sm btn-primary" (click)="unKonwName()">我不知道取什么名字</button>
+                            </div>
+                            <div class="form-group">
+                            <button class="validate btn btn-sm btn-primary">账号密码的限制</button>
+                            </div>
+                            <div class="form-group">
+                            <button class="who btn btn-sm btn-primary">你是谁</button>
+                            </div>
+                        </div>
+                        <div *ngIf="item.additional == 99">
+                            <div style='text-align:center'>这里是可用的指令</div>
+                            <font size='2'><br>日常用语——跟我打招呼<br>人的名字——说些你知道的名字<br>闲聊吹水——如果我的词典里有这句话<br>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-footer">
+            <div class="col-xs-10">
+                <div class="input-group dropup">
+                    <input #dialogInput type="text" class="form-control" aria-label="...">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">快速回复 <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a (click)="quickAnswer($event)">请问怎么充深圳通</a></li>
+                            <li><a (click)="quickAnswer($event)">有没有吃的</a></li>
+                            <li><a (click)="quickAnswer($event)">稳住,我们能赢</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a (click)="quickAnswer($event)">帮助</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2" style="padding-left:0px">
+                <button class="btn btn-primary" (click)="sendMessage()">发送</button>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li class="zhuhand" (click)="toggleSmallZhuHand()">
+            <a>
+                <i class="glyphicon glyphicon-question-sign"></i><span>助手</span>
+            </a>
+        </li>
+        <li id="gotop" style="display: none;" (click)="goTop()">
+            <a>
+                <i class="glyphicon glyphicon-chevron-up"></i><span>顶部</span>
+            </a>
+        </li>
+    </ul>
+</div>

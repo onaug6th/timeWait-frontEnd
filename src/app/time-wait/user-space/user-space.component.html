@@ -1,0 +1,25 @@
+<div class="container" style="margin-top:10px;">
+    <div class="row">
+        <!--个人空间左侧，头像与个人资料按钮开始（固定）-->
+        <div class="spaceleft col-md-2">
+            <div class="Avatar row">
+                <div class="col-xs-4 col-xs-offset-4 col-md-12 col-md-offset-0">
+                    <img alt="140x140" [routerLink]="['/timeWait/userSetting']"
+                        [src]="avatarCDN" class="img-circle" title="update profile" />
+                </div>
+            </div>
+            <div class="name text-center">
+                <div class="form-group"><label>{{currentLoggedInUser.userName}}</label></div>
+                <button class="editprofile btn btn-default" 
+                        [routerLink]="['/timeWait/userSetting']">个人设置
+                </button>
+            </div>
+        </div>
+        <!--个人空间左侧，头像与个人资料按钮结束（固定）-->
+        <!--个人空间左侧，功能切换开始-->
+        <div class="spaceright col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+        <!--个人空间左侧，功能切换结束-->
+    </div>
+</div>

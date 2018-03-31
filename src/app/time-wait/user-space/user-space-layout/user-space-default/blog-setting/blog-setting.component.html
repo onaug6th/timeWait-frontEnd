@@ -1,0 +1,126 @@
+<div class="form-group" style="padding-top: 15px; padding-left: 15px;">
+    <button [routerLink]="['/timeWait/userSpace']" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+</div>
+<table class="setting-table table table-bordered table-hover">
+    <tr>
+        <th>文章名称</th>
+        <th>文章分类</th>
+        <th>发布日期</th>
+        <th>阅读</th>
+        <th>评论</th>
+        <th>操作</th>
+    </tr>
+    <tr *ngFor="let item of articleList">
+        <td>
+            <!-- 文章名称 -->
+            {{item.title}}
+        </td>
+        <td>
+            <!-- 文章分类 -->
+            {{item.type}}
+        </td>
+        <td>
+            <!-- 发布日期 -->
+            {{item.date}}
+        </td>
+        <td>
+            <!-- 阅读 -->
+            {{item.read}}
+        </td>
+        <td>
+            <!-- 评论 -->
+            {{item.commentCount}}
+        </td>
+        <td>
+            <!-- 操作 -->
+            <button class="btn" (click)="openModal($event,item)">查看详情</button>
+        </td>
+    </tr>
+</table>
+<!--底部分页按钮-->
+<app-pagination
+[currentPageNum]="pageInfo.currentPageNum"
+[pagesShow]="pageInfo.pagesShow"
+[totalPages]="pageInfo.totalPages"
+(pageChanged)="pageNavigation($event)">
+</app-pagination>
+<!--底部分页按钮-->
+<!-- 文章详细内容Modal -->
+<div id="article-detail" class="article-detail modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="text-center">文章详细资料</h4>
+                <div class="col-sm-12 text-right">
+                    <button class="btn btn-primary btn-sm" (click)="toggleModalType()">修改</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteArticle(detailModalData._id)">删除</button>
+                </div>
+            </div>
+            <div class="modal-body clearfix" style="height:550px;overflow-y:scroll;">
+                <form class="form-horizontal" *ngIf="modalTypeUpdate == true">
+                    <div class="form-group text-right">
+                        <label for="title" class="col-sm-2">标题</label>
+                        <div class="col-sm-9">
+                            <input id="title" type="text" class="form-control" name="title" [(ngModel)]="detailModalData.title">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <label for="intro" class="col-sm-2">简介</label>
+                        <div class="col-sm-4">
+                            <input id="intro" type="text" class="form-control" name="intro" [(ngModel)]="detailModalData.intro">
+                        </div>
+                        <label for="type" class="col-sm-1">分类</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input id="type" #typeInput type="text" name="type" class="form-control require-input" placeholder="如果想新增的话，直接填吧" [(ngModel)]="detailModalData.type" data-field="分类"/>
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择现有分类 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li *ngFor="let item of typeList">
+                                            <a (click)="chooseType(item.name)">{{item.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 text-right">正文</label>
+                        <div class="col-sm-9">
+                            <ckeditor name="value" [(ngModel)]="detailModalData.value" debounce="500" [config]="config"  (click)="clickEditor($event)"></ckeditor>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal" *ngIf="modalTypeUpdate == false">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 text-right">标题</label>
+                        <div class="col-sm-9">
+                            <div id="title" type="text" class="form-control require-input" name="title">{{detailModalData.title}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="intro" class="col-sm-2 text-right">简介</label>
+                        <div class="col-sm-4">
+                            <div id="intro" type="text" class="form-control require-input" name="intro">{{detailModalData.intro}}</div>
+                        </div>
+                        <label for="type" class="col-sm-1 text-right">分类</label>
+                        <div class="col-sm-4">
+                            <div id="type" type="text" name="type" class="form-control require-input">{{detailModalData.type}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 text-right">正文</label>
+                        <div class="col-sm-9">
+                            <div class="" [innerHTML]="detailModalData.value"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="modalTypeUpdate == true" class="btn btn-primary" (click)="updateArticle()">修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 文章详细内容Modal -->

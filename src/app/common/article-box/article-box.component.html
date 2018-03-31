@@ -1,0 +1,38 @@
+<div [ngSwitch]="size">
+    <div class="col-md-4" *ngSwitchCase="1">
+        <div class="article-box">
+            <span class="article-type">#{{type}}</span>
+            <div class="article-box-photo" [routerLink]="['/blog/articleDetail',articleID]">
+
+            </div>
+            <div class="article-box-detail">
+                <div class="form-group article-box-icon">
+
+                </div>
+                <h4><span class="glyphicon glyphicon glyphicon-pencil"><font></font></span> {{title}}</h4>
+                <div class="article-box-intro">
+                    {{intro}}
+                </div>
+                <button class="btn btn-default" [routerLink]="['/blog/articleDetail',articleID]"># Watch Detail</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" *ngSwitchCase="2">
+        <div class="article-box" style="background:url(../../../assets/img/blog/default/1.JPG)">
+            <div class="article-box-photo" [routerLink]="['/blog/articleDetail',articleID]">
+
+            </div>
+            <div class="article-box-detail">
+                <span class="article-type">#{{type}}</span>
+                <div class="form-group article-box-icon">
+
+                </div>
+                <h4><span class="glyphicon glyphicon-picture"><font></font></span> {{title}}</h4>
+                <div class="article-box-intro">
+                    {{intro}}
+                </div>
+                <button class="btn btn-default" [routerLink]="['/blog/articleDetail',articleID]"># Watch Detail</button>
+            </div>
+        </div>
+    </div>
+</div>

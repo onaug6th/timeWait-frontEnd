@@ -1,0 +1,116 @@
+<div class="article-body container">
+    <div class="row" style="background:white;margin: 30px 0px;box-shadow: 5px 5px 25px #dadada;">
+        <header class="header col-sm-12" style="padding:0px 50px;">
+            <h2 class="text-center" style="color: #555;font-weight:bold">{{article.title}}</h2>
+            <div *ngIf="currentLoggedInUser.userID === article.userID" class="form-group text-right">
+                <button class="btn btn-success" (click)="editArticle()">编辑内容</button>
+            </div>
+            <h5 class="text-right" style="color: #999;">{{article.date}}</h5>
+            <h5 class="text-right" style="color: #999;"># {{article.type}}</h5>
+        </header>
+        <article *ngIf="!isEdit" class="article col-sm-12" [innerHTML]="article.value | keepHtml" style="padding:0px 50px;">
+            
+        </article>
+        <div *ngIf="isEdit" class="form-group">
+            <ckeditor name="article-value" [(ngModel)]="article.value" debounce="500" [config]="config" (click)="clickEditor($event)"></ckeditor>
+        </div>
+        <div *ngIf="isEdit" class="form-group text-center">
+            <button class="btn btn-success" (click)="updateArticle()">保存</button>
+        </div>        
+        <div class="like-and-share col-sm-12 text-center">
+            <button class="like-btn btn btn-lg btn-default" [title]="likeText"
+                    (click)="newLike()">
+                <p class="like-icon" style="margin:0px;position: relative;">&nbsp;&nbsp;👍&nbsp;&nbsp;</p>
+                <p style="margin:0px">{{article.like}}</p>
+            </button>
+        </div>
+        <div class="col-sm-12 row">
+            <div class="row">
+                <div class="col-sm-1 col-xs-2" style="padding: 5px;">
+                    <img alt="用户头像" [src]="currentLoggedInUserBaseInfo.avatar ? currentLoggedInUserBaseInfo.avatar : avatarCDN" style="width: 40px;float:right">
+                </div>
+                <div class="commont-box">
+                    <div class="col-sm-11 col-xs-10">
+                        <div class="no-loggined" *ngIf="!currentLoggedInUser.userID">
+                            <div class="row text-center" style="margin-top:20px;">
+                                <button class="btn btn-primary" data-toggle="modal" data-target=".loginModal">登陆</button> 后评论
+                            </div>
+                        </div>
+                        <textarea class="form-control" placeholder="发表回复" rows="3" [(ngModel)]="commentValue"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 text-right pull-right" style="padding:10px 15px 0px 0px;">
+                            <button class="btn btn-success" (click)="articleCommentValidate()">提交</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <h4 style="margin-bottom:0px">评论  {{articleCommentData.length}}条</h4>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="col-sm-12 row">
+            <div class="reply-box" *ngFor="let item of articleCommentData;let i = index">
+                <div class="user-info">
+                    <div class="col-sm-1 col-xs-2" style="padding: 5px;">
+                        <img alt="用户头像" [src]="item.detail[0].avatar ? item.detail[0].avatar : avatarCDN" style="width: 40px;float:right"
+                            (mouseover)="showDetailInfo(i)">
+                        <div class="intro-detail-warp intro-detail-warp{{i}}" (mouseleave)="hideDetailInfo(i)">
+                            <div class="intro-detail intro-detail{{i}}">
+                                <div class="detail-background" 
+                                        [style.background-image]="
+                                        item.detail.length > 0 ? (item.detail[0].blogBackground ? 'url('+item.detail[0].blogBackground+')' : 'url('+avatarCDN+')') : 'url('+avatarCDN+')'"
+                                >
+                                </div>
+                                <div class="detail-content">
+                                    <h4>{{item.commentUserName}}</h4>
+                                </div>
+                                <div class="detail-operate">
+                                    <button class="btn btn-sm btn-default" (click)="goToBlog(item.commentUserID)">踩踩他的空间</button>
+                                    <button class="btn btn-sm btn-default">他的印象</button>
+                                    <button class="btn btn-sm btn-default">聊天</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-11 col-xs-10">
+                        <p style="font-size:16px;">{{item.floorNum}}楼&nbsp;&nbsp;&nbsp;{{item.commentUserName}}</p>
+                        <p style="color:#8492A6">{{item.commentDate}}</p>
+                    </div>
+                </div>
+                <div style="padding: 25px;" class="col-sm-11 col-sm-offset-1" [innerHTML]="item.commentValue"></div>
+                <div class="like-and-comment col-sm-12" style="padding:20px;color: #969696;">
+                    <div style="padding-right:0px;cursor:pointer;float:left;">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 0个人赞
+                    </div>
+                    <div (click)="toggleCommentBox(i)" style="cursor:pointer;padding-left:0px;margin-left:10px;float:left;">
+                        <span class="glyphicon glyphicon-comment"></span><font>评论</font>
+                    </div>
+                </div>
+                <div id="{{'commont-box' + i}}" class="commont-box col-sm-12" style="display:none">
+                    <div class="col-sm-12">
+                        <textarea class="form-control" placeholder="发表回复" rows="3"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-6 text-right" style="padding:10px 15px;">
+                            <button class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <!--底部分页按钮-->
+            <app-pagination
+                [pageClassConfig]="pageClass"
+                [currentPageNum]="pageInfo.currentPageNum"
+                [pagesShow]="pageInfo.pagesShow"
+                [totalPages]="pageInfo.totalPages"
+                [prevPageText]="pageInfo.prevPageText"
+                [nextPageText]="pageInfo.nextPageText"
+                (pageChanged)="pageNavigation($event)">
+            </app-pagination>
+            <!--底部分页按钮-->
+        </div>
+    </div>
+</div>

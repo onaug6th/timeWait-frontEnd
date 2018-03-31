@@ -1,0 +1,107 @@
+/*
+ * 广场
+ */
+ hr{
+	 width:100%;
+ }
+.square-top{				/*顶部内容（包着滚动图片）*/
+	margin-top:10px;
+	margin-bottom: 20px;
+	padding: 0px;
+}
+.square-top .carousel{
+	padding: 0px;
+}
+.square-top .carousel .left{	/*切换图片按钮 左*/
+	background-image: none;
+}
+.square-top .carousel .right{	/*切换图片按钮 右*/
+	background-image: none;
+}
+.square-top .carousel img{		/*限制图片最大高度*/
+	width: 100%;
+}
+.square-top .carousel .carousel-control{	/*按钮宽度*/
+	width: 5%;
+}
+.square-top .carousel .jumbotron{
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+.square-top .carousel .carousel-caption{		/*图片切换的底部文字介绍*/
+	bottom: 15%;
+    padding: 0;
+    left: -70%;
+    right: 0;
+}
+
+.square-top .sidenav{
+	padding-right: 0px;
+}
+
+.memory{
+
+}
+.memory p{
+	margin: 0px;
+}
+.memory-title{
+	font-weight: 300;
+}
+.memory-img{
+	height:250px;
+	background: #324057
+}
+.memory-date,.memory-location{
+	font-size: 12px;
+	color:#8492A6;
+}
+
+.forum-post{
+    transition: all 1s;
+}
+.forum-post:hover{
+    transform:scale(1.02,1.02) ;
+}
+
+.forum-post p{
+    color:#8492A6
+}
+
+.memory{
+    padding: 0px 10px 0px 10px;
+    margin: 20px 0px 20px 0px;
+    transition: 1s;
+}
+
+.memory:hover{
+    transform:scale(1.02,1.02) ;
+}
+
+.memory-box{
+    padding: 0px;
+    background: white;
+    background-size: cover !important;
+    height:250px;
+    box-shadow: -4px 0 4px rgba(7,17,27,.1),
+                4px 0 4px rgba(7,17,27,.1), 
+                0 -4px 4px rgba(7,17,27,.1),
+                0 4px 4px rgba(7,17,27,.1);
+}
+
+.memory-box-photo{
+    height:60%;
+    background-size:cover !important; 
+    // background: aliceblue;
+}
+
+.memory-box-detail{
+    height: 40%;
+    padding: 0px 15px 0px 15px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.memory-box-icon{
+    padding: 10px;
+    font-size: 20px;
+}

@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <form class="form-signin">
+        <h3 class="form-signin-heading text-center">登录到管理员系统</h3>
+        <label for="login-adminName" class="sr-only">管理员帐号</label>
+        <input type="text" name="userName" class="form-control" placeholder="管理员帐号" required autofocus="" [(ngModel)]="user.userName">
+        <label for="login-adminPwd" class="sr-only">密码</label>
+        <input type="password" name="passWord" class="form-control" placeholder="密码" required [(ngModel)]="user.passWord">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> 记住哥
+            </label>
+        </div>
+        <button class="btn btn-md btn-primary btn-block" (click)="adminLogin()">安全登录</button>
+    </form>
+</div>

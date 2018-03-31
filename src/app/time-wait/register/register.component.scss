@@ -1,0 +1,35 @@
+.registerWarp {
+    background: #fbfbfb;
+    padding: 0px;
+}
+
+.registerBody {
+    padding: 40px;
+    margin-top: 88px;
+    height: 600px
+}
+
+.body-Right {
+    margin-top: 20px;
+    padding: 5px 0px 0px 9px;
+    border-left: 5px solid #eee;
+}
+
+.body-Right label {
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 30px;
+    letter-spacing: 2px;
+}
+
+.loginBtn {
+    width: 60%;
+    margin-left: 3.5%;
+}
+
+.valid-success  {
+    border-left: 5px solid #42A948; /* green */
+}
+.has-error  {
+    border-left: 5px solid #a94442; /* red */
+}

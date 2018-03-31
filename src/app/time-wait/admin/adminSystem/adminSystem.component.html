@@ -1,0 +1,218 @@
+<div class="container-fluid">
+    <div class="row">
+        <div id="subNav" class="col-lg-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li [ngClass]="{'active': nowFunction == 'welcome'}">
+                    <a (click)="changeNowFunction('welcome')"><span class="glyphicon glyphicon-home"></span> 欢迎</a>
+                </li>
+                <li [ngClass]="{'active': nowFunction == 'userManager'}">
+                    <a (click)="changeNowFunction('userManager')"><span class="glyphicon glyphicon-user"></span> 用户管理</a>
+                </li>
+                <li [ngClass]="{'active': nowFunction == 'blogManager'}">
+                    <a (click)="changeNowFunction('blogManager')"><span class="glyphicon glyphicon-inbox"></span> 博客管理</a>
+                </li>
+                <li [ngClass]="{'active': nowFunction == 'forumManager'}">
+                    <a (click)="changeNowFunction('forumManager')"><span class="glyphicon glyphicon-inbox"></span> 论坛管理</a>
+                </li>
+                <li [ngClass]="{'active': nowFunction == 'memoryManager'}">
+                    <a (click)="changeNowFunction('memoryManager')"><span class="glyphicon glyphicon-inbox"></span> 印象管理</a>
+                </li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li [ngClass]="{'active': nowFunction == 'achievementManager'}">
+                    <a (click)="changeNowFunction('achievementManager')"><span class="glyphicon glyphicon-inbox"></span> 成就管理</a>
+                </li>
+                <li>
+                    <a ><span class="glyphicon glyphicon-cog"></span> 管理员配置</a>
+                </li>
+                <li>
+                    <a ><span class="glyphicon glyphicon-wrench"></span> 功能开关</a>
+                </li>
+                <li>
+                    <a ><span class="glyphicon glyphicon-comment"></span> 公告</a>
+                </li>
+                <li>
+                    <a ><span class="glyphicon glyphicon-envelope"></span> 系统日志</a>
+                </li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li>
+                    <a><span class="glyphicon glyphicon-alert"></span> 小黑屋</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-10 main" id="home" *ngIf="nowFunction == 'welcome'">
+            <p class="alert Topalert">管理员操作界面<br />
+                <font size="1">很多功能都没有完成</font>
+            </p>
+            <h4 class="page-header">数据</h4>
+
+            <div class="row placeholders">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="placeholder" style="background-color: #3598dc;">
+                        <div class="visual">
+                            <i class="glyphicon glyphicon-cloud"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> 0 </div>
+                            <div class="desc"> 暂时不知道放什么 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="placeholder" style="background-color: #e7505a;">
+                        <div class="visual">
+                            <i class="glyphicon glyphicon-signal"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{articleAmount}} </div>
+                            <div class="desc"> 目前已有文章 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="placeholder" style="background-color: #32c5d2;">
+                        <div class="visual">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{userAmount}} </div>
+                            <div class="desc"> 目前已注册人数 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="placeholder" style="background-color: #8E44AD;">
+                        <div class="visual">
+                            <i class="glyphicon glyphicon-fire"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> 569 </div>
+                            <div class="desc"> 目前已访问人数 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span> 用户浏览板块 数据统计</span>
+                            </div>
+                        </div>
+                        <div id="userDataChart" style="height: 320px;"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#8E44AD;">
+                                <i class="glyphicon glyphicon-fire"></i>
+                                <span> 访问人数 数据统计</span>
+                            </div>
+                        </div>
+                        <div id="userHotDataChart" style="height: 320px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 25px;">
+                <div class="col-sm-6">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <i class="glyphicon glyphicon-leaf"></i>
+                                <span> 新增用户 </span>
+                            </div>
+                        </div>
+                        <table id="newAddUserTable" style="height: 200px;"></table>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <span> 项目进度 </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--用户管理开始-->
+        <div class="col-lg-10 main" *ngIf="nowFunction == 'userManager'">
+            <user-manager></user-manager>
+        </div>
+        <!--论坛管理开始-->
+        <div class="col-lg-10 main" *ngIf="nowFunction == 'blogManager'">
+            <blog-manager></blog-manager>
+        </div>
+        <div class="col-lg-10 main" *ngIf="nowFunction == 'forumManager'">
+            <forum-manager></forum-manager>
+        </div>
+        <div class="col-lg-10 main" *ngIf="nowFunction == 'achievementManager'">
+            <achievement-manager></achievement-manager>
+        </div>
+        <div class="col-lg-10 col-xs-offset-2 main" id="comment" *ngIf="nowFunction == 'aa'">
+            <p class="alert Topalert">公告<br />
+                <font size="1">公告</font>
+            </p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <i class="glyphicon glyphicon-comment"></i>
+                                <span> 公告 </span>
+                            </div>
+                        </div>
+                        <div style="height: 320px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-xs-offset-2 main" id="systemDiary" *ngIf="nowFunction == 'userssManager'">
+            <p class="alert Topalert">系统日志<br />
+                <font size="1">系统日志</font>
+            </p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <i class="glyphicon glyphicon-comment"></i>
+                                <span> 系统日志 </span>
+                            </div>
+                        </div>
+                        <div style="height: 320px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-xs-offset-2 main" id="countData" *ngIf="nowFunction == 'countData'">
+            <p class="alert Topalert">统计数据<br />
+                <font size="1">统计数据</font>
+            </p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" style="color:#32c5d2;">
+                                <i class="glyphicon glyphicon-comment"></i>
+                                <span> 统计数据 </span>
+                            </div>
+                        </div>
+                        <div style="height: 320px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

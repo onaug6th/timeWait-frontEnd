@@ -1,0 +1,145 @@
+/*
+ * Sidebar
+ */
+
+
+/* Hide for mobile, show later ,no i don't care */
+
+.sidebar {
+	padding-top: 30px;
+	border-radius: 10px;
+}
+
+.sidebar a {
+	color: #a7bdcd;
+}
+
+
+
+/* Sidebar navigation */
+
+.nav-sidebar {
+	margin-bottom: 20px;
+	
+}
+
+.nav-sidebar> li> a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.nav-sidebar> .active> a,
+.nav-sidebar> li> a:hover,
+.nav-sidebar> li> a:focus {
+	cursor: pointer;
+	border-left: 3px solid #5C9ACF;
+	color: #5b9bd1;
+	background-color: #f2f6f9;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+	padding: 20px;
+	padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
+.main .Topalert {
+	background: #f5f8fd;
+	color: #010407;
+	border-left: 5px solid #8bb4e7;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+}
+.placeholders h4 {
+	margin-bottom: 0;
+}
+.placeholder {
+	height:125px;
+	display: block;
+	margin-bottom: 25px;
+	overflow: hidden;
+	border-radius: 4px;
+}
+.placeholder .visual{
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: left;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    font-size: 35px;
+    line-height: 35px;
+}
+.placeholder .visual>i{
+    opacity: 0.7;
+    color: #FFF;
+    margin-left: -55px;
+    font-size: 110px;
+    line-height: 122px;
+}
+.placeholder .details{
+    position: absolute;
+    right: 15px;
+    padding-right: 15px;
+}
+.placeholder .details .number{
+    color: #FFF;
+    padding-top: 25px;
+    text-align: right;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+.placeholder .details .desc{
+	color: #FFF;
+    opacity: 1;
+    text-align: right;
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 300;
+}
+.portlet{
+    padding: 12px 20px 15px;
+    background-color: #fff;
+    border-radius: 5px;height: 400px;
+}
+.portlet .portlet-title{
+    padding: 0;
+    min-height: 48px;
+    border-bottom: 1px solid #eef1f5;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.portlet .caption{
+    padding: 10px 0;
+    float: left;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+}
