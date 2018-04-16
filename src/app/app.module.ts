@@ -47,9 +47,9 @@ import { CommonService } from './services/common.service';
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,
-    CKEditorModule,
     AppRoutingModule,
-    NotFoundModule
+    NotFoundModule,
+    CKEditorModule
   ],
   providers: [
     HttpClientService,
