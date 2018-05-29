@@ -1,12 +1,12 @@
 # TimeWait
 
-website:www.onaug6th.com
+示例网站 website : www.onaug6th.com
 
-backend code:https://github.com/onaug6th/timeWait-backEnd
+后端代码 backend code : https://github.com/onaug6th/timeWait-backEnd
 
-This project is my angular2 learning summary
+This project is my angular2 learning summary。
 
-这个项目是我的一个个人项目，学习angular2的过程。
+这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，包括一个express编写的后端服务。
 
 ## Development server
 
