@@ -244,11 +244,7 @@ export class SmallZhuHandComponent implements OnInit {
                 {
                     "key": ["住,我们", "开黑", "者荣耀"],
                     "value": "可以,我诸葛亮贼6"
-                },
-                {
-                    "key": ["者好帅"],
-                    "value": "是啊,开发者超帅"
-                },
+                }
             ],
             [
                 {
@@ -307,7 +303,7 @@ export class SmallZhuHandComponent implements OnInit {
                                 flag = false;
                             } else {
                                 if (flag) {
-                                    answer = "我看不懂,麻烦你去百度吧";
+                                    answer = "不好意思，词典里没有这个记录，麻烦你去百度吧";
                                 }
                             }
                         } catch (err) {

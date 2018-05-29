@@ -41,9 +41,14 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.info('你好啊 开发者');
-    console.info('很高兴在这里看到你');
-    console.info('我的联系方式 wechat: onaug6th,qq: 592986151');
+    console.log(`%c 你好啊 😄 %c 开发者 💻`,
+                "background:#014983 ; font-size : 14px;color : white; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff",
+                "background:#ccc ; font-size : 14px; color : #014983; padding: 1px; border-radius: 0 3px 3px 0;");
+
+    console.log(`%c很高兴在这里看到你 😊`,
+    "background:#fff ; color : #014983;font-size : 14px; padding: 1px; border-radius: 0 3px 3px 0;");
+
+    console.info('%c这是我的联系方式 wechat 🛰️: onaug6th ,qq 🐧: 592986151','font-size : 14px;');
 
     const that = this;
     //  首次加载先获取全部成就列表

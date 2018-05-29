@@ -91,18 +91,7 @@ export class HttpClientService {
 				}
 			}
 		}).catch(err => {
-			let tips;
-			if (err.status == 0) {
-				tips = '网络连接出错,请检查网络状态';
-			} else if (err.status == 401) {
-				tips = '登录过期,请重新登录';
-			} else if (err.status == 404) {
-				tips = '访问接口不存在,请检查后重试';
-			} else if (err.status == 500) {
-				tips = '系统发生一个错误,请稍后重试!';
-			} else {
-				tips = '系统发生一个错误,请稍后重试!';
-			}
+			let tips = '网络好像不通，是后端服务没有开启吗？';
 			if (_postConfig.isAlterError) {
 				window['swal']("提示", tips, "error");
 			}
