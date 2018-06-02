@@ -4,9 +4,7 @@
 
 ## 示例网站 website : www.onaug6th.com
 
-后端代码 backend code : https://github.com/onaug6th/timeWait-backEnd
-
-This project is my angular2 learning summary。
+后端代码 : https://github.com/onaug6th/timeWait-backEnd
 
 这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，包含（小型论坛，博客，注册登陆系统，管理员系统...）。
 
@@ -20,7 +18,7 @@ This project is my angular2 learning summary。
 
 在这个项目开始启动的时候，是和一个后端的同学合伙的。但是后来不了了之了。于是找了另外一个同事来参加，也被嫌弃想法太天真而被放弃了。所以最后选择学习javascript的亲戚node.js来实现自己的后端，同时也入门了no sql mongoDB，不得不说这几个家伙在一起开发是真的快。
 
-# 为什么要建这个网站呢？
+### 为什么要建这个网站呢？
 
 因为看过很多优秀的开发者都有自己的个人博客，上面一堆自己的干货和分享和总结心得。和其他开发者的讨论也很有意思。
 
@@ -30,24 +28,26 @@ This project is my angular2 learning summary。
 
 花了两个月时间将这个项目写完，通过自己的域名在外网上看到了自己的网站，也算是有一点小成就了。
 
+下方有部分项目内容截图。
+
 后端使用express，数据库MongoDB，数据库中间件Mongoose。
 
 如果觉得对你有帮助的话，可以给我个star哦。谢谢啦 😄
 
-## Development server
+### 用法
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Install
-
-Using npm:
 ```
+git clone https://github.com/onaug6th/timeWait-frontEnd
+
+cd timeWait-frontEnd
+
 npm install 
 
 ng serve
 ```
+默认会开启4200端口，访问localhost:4200即可打开项目。
 
-## Build
+### 构建
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
