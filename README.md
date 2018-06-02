@@ -1,12 +1,16 @@
-# TimeWait
+## TimeWait
 
-示例网站 website : www.onaug6th.com
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/homePage.jpg" alt="homePage">
+
+## 示例网站 website : www.onaug6th.com
 
 后端代码 backend code : https://github.com/onaug6th/timeWait-backEnd
 
 This project is my angular2 learning summary。
 
-这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，包括一个express编写的后端服务。
+这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，包含（小型论坛，博客，注册登陆系统，管理员系统...）
+
+后端技术使用Node.js express，数据库MongoDB，数据库中间件Mongoose。
 
 ## Development server
 
@@ -34,3 +38,16 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+## 部分截图
+
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/square.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/forum.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/about.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blog.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blogDetail.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/userSpace.jpg" alt="square">
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/system.jpg" alt="square">
+
+## 开源许可证
+
+MIT
