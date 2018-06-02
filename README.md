@@ -12,6 +12,8 @@ This project is my angular2 learning summary。
 
 后端技术使用Node.js express，数据库MongoDB，数据库中间件Mongoose。
 
+如果觉得对你有帮助的话，可以给我个star哦。谢谢啦 😄
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
