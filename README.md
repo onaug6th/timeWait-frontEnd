@@ -22,7 +22,7 @@ Using npm:
 ```
 npm install 
 
-npm run dev
+ng serve
 ```
 
 ## Build
