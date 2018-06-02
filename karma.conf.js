@@ -27,7 +27,17 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless', 'FirefoxHeadless'],
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: "ChromeHeadless",
+        flags: ["--no-sandbox"]
+      },
+      FirefoxHeadless: { 
+        base: "Firefox", 
+        flags: ["-headless"]
+      }
+    },
     singleRun: false
   });
 };
