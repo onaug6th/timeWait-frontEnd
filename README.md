@@ -67,7 +67,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/about.jpg" alt="about" />
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blog.jpg" alt="blog" />
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blogDetail.jpg" alt="blogDeatil" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/userSpace.jpg" alt="userSpace" />
+<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/user.jpg" alt="userSpace" />
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/profile.jpg" alt="profile" />
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/system.jpg" alt="system" />
 
