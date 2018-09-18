@@ -2,8 +2,6 @@
 
 <img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/homePage.jpg" alt="homePage">
 
-## 示例网站 website : www.onaug6th.com
-
 后端代码 : https://github.com/onaug6th/timeWait-backEnd
 
 这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，项目内容包含（小型论坛，博客，注册登陆系统，管理员系统，还有一些自己添加的小玩意... ）。对应的后端代码接口都在另外一个后端代码项目中。
