@@ -1,18 +1,19 @@
 ## TimeWait
+[![Build Status](https://travis-ci.org/onaug6th/timeWait-frontEnd.svg?branch=master)](https://travis-ci.org/onaug6th/timeWait-frontEnd)
 
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/homePage.jpg" alt="homePage">
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/homePage.jpg" alt="homePage">
 
-后端代码 : https://github.com/onaug6th/timeWait-backEnd
+学习angular2的过程的个人项目，整合了angular全家桶功能在内，项目内容包含（小型论坛，博客，注册登陆系统，管理员系统，还有一些自己添加的小玩意... ）。
 
-这个项目是我的一个个人项目，学习angular2的过程。整合了angular全家桶功能在内，项目内容包含（小型论坛，博客，注册登陆系统，管理员系统，还有一些自己添加的小玩意... ）。对应的后端代码接口都在另外一个后端代码项目中。
+后端项目代码 : https://github.com/onaug6th/timeWait-backEnd
 
 ## 概况
 
-一开始有想过选择primeng或者element angular这样的库。但是考虑到primeng的组件库不太合适自己，element angular还没有普及。所以最后还是选择了bootstrap。
+一开始有想过选择primeng或者element angular这样的库。但是考虑到primeng的组件库不太合适自己，element angular还没有普及。所以最后还是选择了bootstrap作为样式库，组件自己造。
 
-不得不说bootstrap的确很常见，但是作为老牌样式框架。稳定和以及自己工作一直在用这个，所以是目前最好的选择。
+bootstrap作为老牌样式框架。稳定和以及自己工作一直在用这个，所以是目前最好的选择。
 
-公司选择使用的是vue.js框架，这个项目一开始也打算用vue来开发的。但是后来和广州那边的前端团队共同开发大型项目选择了angular2，angular2的学习陡度比vue要难多了。不过还好有着vue的经验，上手angular2也特别快。因为公司技术更换，所以这个项目也从vue换成了angular2。
+一开始是用vue来开发的。但是后来和其他团队共同开发大型项目选择了angular2，angular2的学习陡度比vue要难多了。不过还好有着vue的经验，上手angular2也特别快。因为公司技术更换，所以这个项目也从vue换成了angular2。
 
 在这个项目开始启动的时候，是和一个后端的同学合伙的。但是后来不了了之了。于是找了另外一个同事来参加，也被嫌弃想法太天真而被放弃了。所以最后选择学习javascript的亲戚node.js来实现自己的后端，同时也入门了no sql mongoDB，不得不说这几个家伙在一起开发是真的快。
 
@@ -60,14 +61,14 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## 部分截图
 
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/square.jpg" alt="square" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/forum.jpg" alt="forum" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/about.jpg" alt="about" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blog.jpg" alt="blog" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/blogDetail.jpg" alt="blogDeatil" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/user.jpg" alt="userSpace" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/profile.jpg" alt="profile" />
-<img src="http://oz1y7s5ij.bkt.clouddn.com/images/common/git-intro/system.jpg" alt="system" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/square.jpg" alt="square" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/forum.jpg" alt="forum" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/about.jpg" alt="about" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blog.jpg" alt="blog" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blogDetail.jpg" alt="blogDeatil" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/user.jpg" alt="userSpace" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/profile.jpg" alt="profile" />
+<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/system.jpg" alt="system" />
 
 ## 开源许可证
 
