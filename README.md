@@ -61,14 +61,14 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## 部分截图
 
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/square.jpg" alt="square" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/forum.jpg" alt="forum" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/about.jpg" alt="about" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blog.jpg" alt="blog" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blogDetail.jpg" alt="blogDeatil" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/user.jpg" alt="userSpace" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/profile.jpg" alt="profile" />
-<img src="	https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/system.jpg" alt="system" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/square.jpg" alt="square" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/forum.jpg" alt="forum" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/about.jpg" alt="about" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blog.jpg" alt="blog" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/blogDetail.jpg" alt="blogDeatil" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/user.jpg" alt="userSpace" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/profile.jpg" alt="profile" />
+<img src="https://timewait-1253668581.cos.ap-chengdu.myqcloud.com/system.jpg" alt="system" />
 
 ## 开源许可证
 
